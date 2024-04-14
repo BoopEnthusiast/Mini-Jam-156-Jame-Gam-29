@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://sobqn0lobnds"]
+[gd_scene load_steps=8 format=3 uid="uid://sobqn0lobnds"]
 
 [ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="1_cwdgk"]
+[ext_resource type="Texture2D" uid="uid://dkphdmglepo6j" path="res://resources/hourglasses/hourglass normal.png" id="2_x7pds"]
 
 [sub_resource type="GDScript" id="GDScript_tdrg0"]
 script/source = "extends Area2D
@@ -88,6 +89,13 @@ script = SubResource("GDScript_30wox")
 
 [node name="Collider" type="CollisionShape2D" parent="DoorwayROutside"]
 shape = SubResource("CircleShape2D_3de0x")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-2, -219)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_x7pds")
 
 [connection signal="body_entered" from="DoorwayLInside" to="DoorwayLInside" method="_on_body_entered"]
 [connection signal="body_entered" from="DoorwayRInside" to="DoorwayRInside" method="_on_body_entered"]
