@@ -1,11 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://sobqn0lobnds"]
+[gd_scene load_steps=25 format=3 uid="uid://sobqn0lobnds"]
 
 [ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="1_cwdgk"]
 [ext_resource type="Script" path="res://scripts/hourglass.gd" id="2_rkdso"]
 [ext_resource type="Texture2D" uid="uid://dkphdmglepo6j" path="res://resources/hourglasses/hourglass normal.png" id="2_x7pds"]
+[ext_resource type="Texture2D" uid="uid://c0xsxd2ji4w4n" path="res://resources/hourglasses/glass_export_frame_1.png" id="3_p5hqv"]
+[ext_resource type="Texture2D" uid="uid://d22awc22rgvsg" path="res://resources/hourglasses/glass_export_frame_2.png" id="4_i5657"]
 [ext_resource type="Texture2D" uid="uid://08nye25oj024" path="res://resources/hourglasses/hourglass_before_1.png" id="4_ln5or"]
 [ext_resource type="Texture2D" uid="uid://infwwf58x7we" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_blue.png" id="5_2u64b"]
 [ext_resource type="Texture2D" uid="uid://bjt7dj2asb7ly" path="res://resources/hourglasses/hourglass_crack_1.png" id="5_8j4d6"]
+[ext_resource type="Texture2D" uid="uid://bkx50glug1qvp" path="res://resources/hourglasses/glass_export_frame_3.png" id="5_l40ot"]
 [ext_resource type="Texture2D" uid="uid://pndswywayea8" path="res://resources/hourglasses/hourglass_crack_2.png" id="6_bo7j6"]
 [ext_resource type="Texture2D" uid="uid://478hiphiaef" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_red.png" id="6_dr4xj"]
 [ext_resource type="Texture2D" uid="uid://u4u0upc87g7w" path="res://resources/hourglasses/hourglass_crack_3.png" id="7_a55xl"]
@@ -14,7 +17,16 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cbrht"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p5hqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i5657")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l40ot")
+}],
 "loop": true,
 "name": &"break",
 "speed": 3.0
@@ -116,7 +128,6 @@ polygon = PackedVector2Array(-269, -78, -206, -192, -21, -317, -164, -456, -272,
 position = Vector2(0, -362)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_cbrht")
-animation = &"break"
 
 [node name="AttackArea" type="Area2D" parent="Hourglass"]
 collision_layer = 0
