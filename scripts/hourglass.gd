@@ -14,7 +14,6 @@ func _ready():
 
 
 func _on_attack_area_body_entered(body):
-	print(body)
 	if body is Player:
 		is_getting_attacked = true
 
@@ -25,14 +24,14 @@ func _on_attack_area_body_exited(body):
 
 
 func player_has_attacked(which_attack: int) -> void:
-	print(is_getting_attacked)
-	if not is_getting_attacked:
+	if not is_getting_attacked and not Singleton.has_game_won:
 		return
 	
 	if needed_order_of_attacks[current_attack_index] == which_attack:
 		current_attack_index += 1
 		if current_attack_index >= needed_order_of_attacks.size() - 1:
-			print("Winner here!")
+			Singleton.game_won.emit()
+			Singleton.has_game_won = false
 	else:
 		current_attack_index = 0
 	

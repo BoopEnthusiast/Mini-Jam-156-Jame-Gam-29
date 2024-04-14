@@ -379,6 +379,8 @@ radius = 60.0
 height = 120.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yof2t"]
+random_pitch = 1.5
+random_volume_offset_db = 4.0
 streams_count = 4
 stream_0/stream = ExtResource("7_iv7ii")
 stream_0/weight = 1.0
