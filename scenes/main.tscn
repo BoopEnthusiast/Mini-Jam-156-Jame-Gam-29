@@ -58,7 +58,6 @@ position = Vector2(-11925, 2268)
 position = Vector2(-4969, 31)
 
 [node name="MiscFullscreenEffects" parent="." instance=ExtResource("10_tak70")]
-visible = false
 z_index = 1
 z_as_relative = false
 scale = Vector2(10, 10)
