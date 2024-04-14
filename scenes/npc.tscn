@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv4myo2y4rjnx"]
+[gd_scene load_steps=3 format=3 uid="uid://dv4myo2y4rjnx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cbgq"]
+radius = 215.002
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao04y"]
 size = Vector2(88, 164)
 
 [node name="NPC" type="StaticBody2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="TalkArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkArea"]
+shape = SubResource("CircleShape2D_5cbgq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ao04y")

@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://btcncnm8lyjnm"]
+[gd_scene load_steps=8 format=3 uid="uid://btcncnm8lyjnm"]
 
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
 [ext_resource type="PackedScene" uid="uid://hik6w44brocv" path="res://scenes/map.tscn" id="2_glwhr"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_region.gd" id="3_046bj"]
 [ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="3_ygrr7"]
 [ext_resource type="AudioStream" uid="uid://d0mb3s6sorw1m" path="res://resources/audio/Artifact_2.wav" id="6_8u420"]
-[ext_resource type="Texture2D" uid="uid://bsy7jy0xpm4bp" path="res://resources/collseum/collseum_pixeled_3.png" id="6_dfkmy"]
-[ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="7_sq112"]
+[ext_resource type="PackedScene" uid="uid://sobqn0lobnds" path="res://scenes/colosseum.tscn" id="6_vnv5y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66kvv"]
 radius = 1000.0
@@ -45,19 +44,6 @@ stream = ExtResource("6_8u420")
 autoplay = true
 bus = &"BGM"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Collseum" type="Sprite2D" parent="StaticBody2D"]
-z_index = -1
-position = Vector2(62, 0)
-scale = Vector2(4, 4)
-texture = ExtResource("6_dfkmy")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-
-[node name="CollseumPixelDoor" type="Sprite2D" parent="."]
-position = Vector2(60, 0)
-scale = Vector2(4, 4)
-texture = ExtResource("7_sq112")
+[node name="Colosseum" parent="." instance=ExtResource("6_vnv5y")]
 
 [connection signal="finished" from="BGMPlayer" to="." method="_on_bgm_player_finished"]

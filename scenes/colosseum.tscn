@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://sobqn0lobnds"]
+
+[ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="1_cwdgk"]
+
+[sub_resource type="GDScript" id="GDScript_tdrg0"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body):
+	if body is Player:
+		body.global_position.x -= 800
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3de0x"]
+radius = 62.0
+
+[sub_resource type="GDScript" id="GDScript_rt4wl"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body):
+	if body is Player:
+		body.global_position.x += 800
+"
+
+[sub_resource type="GDScript" id="GDScript_0sb2y"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body):
+	if body is Player:
+		body.global_position.x += 800
+"
+
+[sub_resource type="GDScript" id="GDScript_30wox"]
+script/source = "extends Area2D
+
+
+
+func _on_body_entered(body):
+	if body is Player:
+		body.global_position.x -= 800
+"
+
+[node name="Colosseum" type="StaticBody2D"]
+z_index = -1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(60, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_cwdgk")
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-919, -764, -1160, -536, -1213, 35, -1176, 487, -926, 766, -515, 951, -136, 1030, 508, 991, 1014, 720, 1231, 446, 1215, -168, 1165, -558, 887, -768, 455, -948, 246, -994, -305, -964, -581, -917, -400, -315, -31, -366, 296, -326, 581, -216, 755, -47, 804, 127, 469, 339, -1, 409, -252, 409, -487, 345, -798, 124, -786, -13, -686, -134, -407, -313, -589, -914)
+
+[node name="DoorwayLInside" type="Area2D" parent="."]
+position = Vector2(-737, -104)
+script = SubResource("GDScript_tdrg0")
+
+[node name="Collider" type="CollisionShape2D" parent="DoorwayLInside"]
+shape = SubResource("CircleShape2D_3de0x")
+
+[node name="DoorwayRInside" type="Area2D" parent="."]
+position = Vector2(733, -104)
+script = SubResource("GDScript_rt4wl")
+
+[node name="Collider" type="CollisionShape2D" parent="DoorwayRInside"]
+shape = SubResource("CircleShape2D_3de0x")
+
+[node name="DoorwayLOutside" type="Area2D" parent="."]
+position = Vector2(-1202, -104)
+script = SubResource("GDScript_0sb2y")
+
+[node name="Collider" type="CollisionShape2D" parent="DoorwayLOutside"]
+shape = SubResource("CircleShape2D_3de0x")
+
+[node name="DoorwayROutside" type="Area2D" parent="."]
+position = Vector2(1222, -104)
+script = SubResource("GDScript_30wox")
+
+[node name="Collider" type="CollisionShape2D" parent="DoorwayROutside"]
+shape = SubResource("CircleShape2D_3de0x")
+
+[connection signal="body_entered" from="DoorwayLInside" to="DoorwayLInside" method="_on_body_entered"]
+[connection signal="body_entered" from="DoorwayRInside" to="DoorwayRInside" method="_on_body_entered"]
+[connection signal="body_entered" from="DoorwayLOutside" to="DoorwayLOutside" method="_on_body_entered"]
+[connection signal="body_entered" from="DoorwayROutside" to="DoorwayROutside" method="_on_body_entered"]
