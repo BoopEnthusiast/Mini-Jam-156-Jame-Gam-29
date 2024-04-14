@@ -2,13 +2,13 @@
 
 [sub_resource type="Gradient" id="Gradient_60qkx"]
 offsets = PackedFloat32Array(0, 0.602, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.456, 0.456, 0.456, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.454902, 0.454902, 0.454902, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dk0es"]
 gradient = SubResource("Gradient_60qkx")
-width = 1080
-height = 1080
-repeat = 1
+width = 1152
+height = 1152
+repeat = 2
 
 [node name="MiscFullscreenEffects" type="Node2D"]
 top_level = true
