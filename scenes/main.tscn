@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btcncnm8lyjnm"]
+[gd_scene load_steps=18 format=3 uid="uid://btcncnm8lyjnm"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_73tdu"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
@@ -7,14 +7,31 @@
 [ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="3_ygrr7"]
 [ext_resource type="AudioStream" uid="uid://fc52xdg2d3oe" path="res://resources/audio/Music_test_1.wav" id="6_mu4tf"]
 [ext_resource type="PackedScene" uid="uid://sobqn0lobnds" path="res://scenes/colosseum.tscn" id="6_vnv5y"]
+[ext_resource type="AudioStream" uid="uid://canyi5j0o2qgl" path="res://resources/audio/Music_test_2.wav" id="7_a0qrl"]
+[ext_resource type="AudioStream" uid="uid://dcawgnr50hbes" path="res://resources/audio/Music_test_3.wav" id="8_dkuw1"]
 [ext_resource type="PackedScene" uid="uid://d32f7wea28wmo" path="res://scenes/artefact.tscn" id="8_ncof4"]
 [ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="9_44ygi"]
+[ext_resource type="AudioStream" uid="uid://cltukhl3f74um" path="res://resources/audio/Music_test_4.wav" id="9_ukd24"]
+[ext_resource type="AudioStream" uid="uid://c3uuwsqehky2k" path="res://resources/audio/Music_test_5.wav" id="10_dlbl0"]
 [ext_resource type="PackedScene" uid="uid://dpqmrxhikxcag" path="res://scenes/misc_fullscreen_effects.tscn" id="10_tak70"]
 [ext_resource type="PackedScene" uid="uid://dr5y35crbwxyw" path="res://scenes/puzzle_room.tscn" id="11_dukqg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66kvv"]
 radius = 1000.0
 height = 2000.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u3gxa"]
+streams_count = 5
+stream_0/stream = ExtResource("6_mu4tf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_a0qrl")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_dkuw1")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_ukd24")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("10_dlbl0")
+stream_4/weight = 1.0
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -47,7 +64,7 @@ position = Vector2(392, 492)
 position = Vector2(-198, 547)
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_mu4tf")
+stream = SubResource("AudioStreamRandomizer_u3gxa")
 volume_db = -10.0
 autoplay = true
 bus = &"BGM"
