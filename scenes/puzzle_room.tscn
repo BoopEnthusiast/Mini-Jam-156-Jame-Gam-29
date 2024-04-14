@@ -39,5 +39,5 @@ which_gem = 2
 [node name="NPC" parent="." instance=ExtResource("6_4t2ls")]
 position = Vector2(250, 50)
 scale = Vector2(0.25, 0.25)
-dialogue = "Flick the levers to the correct position to obtain the artefact"
+dialogue = "Flick the levers to the correct position to obtain the artefact. (Interact with the levers using F)"
 which_npc = 1
