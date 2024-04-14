@@ -17,17 +17,17 @@ layer_1/tile_data = PackedInt32Array(589824, 196611, 2, 524288, 196611, 1, 45875
 script = ExtResource("2_dbnji")
 
 [node name="Lever" parent="." instance=ExtResource("2_s0y4g")]
-position = Vector2(119, 40.25)
+position = Vector2(100, 40)
 
 [node name="Lever2" parent="." instance=ExtResource("2_s0y4g")]
-position = Vector2(157, 42.25)
+position = Vector2(150, 40)
 
 [node name="Lever3" parent="." instance=ExtResource("2_s0y4g")]
-position = Vector2(200, 40.25)
+position = Vector2(200, 40)
 
 [node name="Artefact" parent="." instance=ExtResource("5_58kvm")]
 visible = false
-position = Vector2(50, 30)
+position = Vector2(150, 100)
 scale = Vector2(1, 1)
 which_gem = 2
 
