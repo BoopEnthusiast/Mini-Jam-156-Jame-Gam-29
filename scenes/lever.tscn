@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq2duwyopbk0"]
+[gd_scene load_steps=6 format=3 uid="uid://dq2duwyopbk0"]
 
 [ext_resource type="Script" path="res://scripts/lever.gd" id="1_7fg6v"]
 [ext_resource type="Texture2D" uid="uid://dbj66nptjmps2" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Levers_on_and_off.png" id="2_sxe88"]
+[ext_resource type="AudioStream" uid="uid://bapxeycoqyc6f" path="res://resources/audio/Lever.wav" id="3_4lmcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0s3g"]
 size = Vector2(12, 10)
@@ -36,6 +37,8 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_038lq")
 
 [node name="toggleSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4lmcd")
+volume_db = 5.0
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
