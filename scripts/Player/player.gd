@@ -53,7 +53,7 @@ var prevDir: Vector2 = Vector2.UP #used for determining idle directions
 
 #timed action system, used for attacks and possibly dashes/dodges in the future
 const timedActionNumber =         [2,3,4]   #refers to action number
-const timedActionDuration =       [0.25,0.125,0.25]#in secconds
+const timedActionDuration =       [0.125,0.125,0.25]#in secconds
 const timedActionDefaultCooldown =[1,2,0]
 const timedActionAnimationPosition =  [3,4,5] #represents the index * stride
 var timedActionCooldown =       [0,0,0]
@@ -67,7 +67,7 @@ const ResetDurationDesired = 2.0 #the amount of time the reset should take
 var initialResetSize = 0
 
 var weaponHitbox: player_hitbox
-const weaponDamage = 30
+const weaponDamage = 3
 @onready var trialParticles = $"AnimatedSprite2D/particle affects/trailParticles"
 @onready var weaponParticles1: CPUParticles2D = $"AnimatedSprite2D/particle affects/WeaponParticles1"
 func _ready():
@@ -169,6 +169,7 @@ func handleTimedActions(delta):
 			weaponParticles1.emitting = true
 			weaponParticles1.direction = desireRot
 			weaponHitbox.updateRot(desireRot)
+			weaponHitbox.resetSwing()
 
 
 func handlePlayerAnimations():
