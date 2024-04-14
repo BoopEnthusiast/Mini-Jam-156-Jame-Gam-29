@@ -14,4 +14,3 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body is Player:
 		$Sprite2D.set_frame(3)
-		print("artefact obtained")
