@@ -12,7 +12,6 @@ func _ready():
 
 
 func _on_talk_area_body_entered(body):
-	print(body)
 	if body is Player:
 		text_background.start_showing_dialogue(dialogue)
 
