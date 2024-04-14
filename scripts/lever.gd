@@ -4,27 +4,31 @@ var can_toggle = true
 var on = false
 var player_detected = false
 
+@onready var timer = $Timer
+@onready var sprite_2d = $Sprite2D
+@onready var toggle_sound = $toggleSound
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if Input.is_action_pressed("interact") and can_toggle and player_detected:
 		toggle()
 		can_toggle = false
-		$Timer.start();
+		timer.start();
 
 
 func toggle():
 	if on:
 		on = false
-		$Sprite2D.set_frame(2)
+		sprite_2d.set_frame(2)
 	else:
 		on = true
-		$Sprite2D.set_frame(3)
-	%toggleSound.play
+		sprite_2d.set_frame(3)
+	toggle_sound.play()
 
 
 func _on_area_2d_body_entered(body):
