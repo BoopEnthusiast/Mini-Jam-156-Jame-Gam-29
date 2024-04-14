@@ -11,9 +11,6 @@ extends RigidBody2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var start_position = global_position
 @onready var max_health = health
-@onready var slow_timer: Timer = $slow_timer
-
-var speed_multiplier: float = 1
 
 var is_agroed = false
 var is_attacking = false
