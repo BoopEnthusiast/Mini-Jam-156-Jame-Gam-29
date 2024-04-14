@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dr5y35crbwxyw"]
+[gd_scene load_steps=7 format=3 uid="uid://dr5y35crbwxyw"]
 
 [ext_resource type="TileSet" uid="uid://bvx4tpn7c2mxi" path="res://resources/tilesets/main_tile_set.tres" id="1_o0tw2"]
 [ext_resource type="Script" path="res://scripts/puzzle_room.gd" id="2_dbnji"]
 [ext_resource type="PackedScene" uid="uid://dq2duwyopbk0" path="res://scenes/lever.tscn" id="2_s0y4g"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="3_1c0rr"]
-[ext_resource type="PackedScene" uid="uid://cbcnnmq68sns5" path="res://scenes/artefact.tscn" id="5_58kvm"]
+[ext_resource type="PackedScene" uid="uid://xtoxogtkfs5f" path="res://scenes/artefact.tscn" id="5_58kvm"]
+[ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="6_4t2ls"]
 
 [node name="PuzzleRoom" type="TileMap"]
 scale = Vector2(4, 4)
@@ -34,3 +35,9 @@ visible = false
 position = Vector2(50, 30)
 scale = Vector2(1, 1)
 which_gem = 2
+
+[node name="NPC" parent="." instance=ExtResource("6_4t2ls")]
+position = Vector2(250, 50)
+scale = Vector2(0.25, 0.25)
+dialogue = "Flick the levers to the correct position to obtain the artefact. (Interact with the levers using F)"
+which_npc = 1

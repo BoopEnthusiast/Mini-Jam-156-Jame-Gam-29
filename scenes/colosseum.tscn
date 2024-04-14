@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://sobqn0lobnds"]
+[gd_scene load_steps=10 format=3 uid="uid://sobqn0lobnds"]
 
 [ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="1_cwdgk"]
 [ext_resource type="Texture2D" uid="uid://dkphdmglepo6j" path="res://resources/hourglasses/hourglass normal.png" id="2_x7pds"]
@@ -42,6 +42,12 @@ func _on_body_entered(body):
 	if body is Player:
 		body.global_position.x -= 700
 "
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5jxp"]
+size = Vector2(219, 675)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kg3os"]
+radius = 204.039
 
 [node name="Colosseum" type="StaticBody2D"]
 z_index = -1
@@ -96,6 +102,19 @@ shape = SubResource("CircleShape2D_3de0x")
 position = Vector2(-2, -219)
 scale = Vector2(3.2, 3.2)
 texture = ExtResource("2_x7pds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(-21.5, -218.5)
+shape = SubResource("RectangleShape2D_e5jxp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, -1)
+shape = SubResource("CircleShape2D_kg3os")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, -482)
+shape = SubResource("CircleShape2D_kg3os")
 
 [connection signal="body_entered" from="DoorwayLInside" to="DoorwayLInside" method="_on_body_entered"]
 [connection signal="body_entered" from="DoorwayRInside" to="DoorwayRInside" method="_on_body_entered"]
