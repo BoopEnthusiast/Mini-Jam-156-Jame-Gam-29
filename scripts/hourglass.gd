@@ -32,6 +32,7 @@ func player_has_attacked(which_attack: int) -> void:
 		if current_attack_index >= needed_order_of_attacks.size() - 1:
 			Singleton.game_won.emit()
 			Singleton.has_game_won = false
+			crack_frames.play("break")
 	else:
 		current_attack_index = 0
 	

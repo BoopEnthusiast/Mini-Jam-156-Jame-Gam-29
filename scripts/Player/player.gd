@@ -7,6 +7,8 @@ var allow_attack_1:bool = false
 var allow_attack_2:bool = false
 var allow_attack_3:bool = false
 
+@onready var dash_sound = $DashSound
+
 var player_health = 100
 func hit_player(damage):
 	if currentAction == 4:
@@ -82,7 +84,7 @@ const weaponDamage = [2,3,4,5]
 @onready var audio1: AudioStreamPlayer2D = $sound1
 @onready var theVeryImportantHappyBlackPixelAndHisVerySeriousParent_TheBigArrow_UsedForFullScreenAffectsWhenDie = $Camera2D/CanvasLayer/UI/ArrowBig
 var currentFootstepCooldown = 0
-const footstepCooldown = 0.6
+const footstepCooldown = 0.4
 const postResetFrames = 60
 var currentPostResetFrames = 0
 
@@ -199,6 +201,7 @@ func handleTimedActions(delta):
 	match currentAction:
 		3:
 			velocity = wishDir*dashImpulse
+			dash_sound.play()
 		5: 
 			weaponParticles1.color = Color.WHITE
 			weaponHitbox.rad = 60

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqch1a4oqpfvh"]
+[gd_scene load_steps=15 format=3 uid="uid://dqch1a4oqpfvh"]
 
 [ext_resource type="Script" path="res://scripts/health_label.gd" id="1_5txs4"]
 [ext_resource type="Script" path="res://scripts/TimerLabel.gd" id="1_hixn6"]
@@ -20,6 +20,42 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0k2kf"]
 atlas = ExtResource("7_01g4i")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_nm6rs"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2udy8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7180"]
+_data = {
+"RESET": SubResource("Animation_2udy8"),
+"fade_to_black": SubResource("Animation_nm6rs")
+}
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -92,13 +128,18 @@ scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_0k2kf")
 script = ExtResource("6_66mkg")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k7180")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 7
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

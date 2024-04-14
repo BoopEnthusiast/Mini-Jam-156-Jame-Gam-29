@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://sobqn0lobnds"]
+[gd_scene load_steps=22 format=3 uid="uid://sobqn0lobnds"]
 
 [ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="1_cwdgk"]
 [ext_resource type="Script" path="res://scripts/hourglass.gd" id="2_rkdso"]
@@ -10,9 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://478hiphiaef" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_red.png" id="6_dr4xj"]
 [ext_resource type="Texture2D" uid="uid://u4u0upc87g7w" path="res://resources/hourglasses/hourglass_crack_3.png" id="7_a55xl"]
 [ext_resource type="Texture2D" uid="uid://thdifxumuqwm" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_yellow.png" id="7_d1rd7"]
+[ext_resource type="AudioStream" uid="uid://2elh3lsgrj2o" path="res://resources/audio/Breaking_glass.wav" id="11_mu03v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cbrht"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"break",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_x7pds")
@@ -110,6 +116,7 @@ polygon = PackedVector2Array(-269, -78, -206, -192, -21, -317, -164, -456, -272,
 position = Vector2(0, -362)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_cbrht")
+animation = &"break"
 
 [node name="AttackArea" type="Area2D" parent="Hourglass"]
 collision_layer = 0
@@ -132,6 +139,9 @@ texture = SubResource("AtlasTexture_nod75")
 position = Vector2(0, -121)
 scale = Vector2(16, 16)
 texture = SubResource("AtlasTexture_fyrap")
+
+[node name="ShatteringSound" type="AudioStreamPlayer2D" parent="Hourglass"]
+stream = ExtResource("11_mu03v")
 
 [node name="Doorways" type="Node" parent="."]
 

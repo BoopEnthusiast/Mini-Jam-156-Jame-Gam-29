@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://d26nxoa5ym6p8"]
+[gd_scene load_steps=67 format=3 uid="uid://d26nxoa5ym6p8"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_8721r"]
 [ext_resource type="Texture2D" uid="uid://dwh00xnapdk6" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Mushroom_man_character_sheet.png" id="2_lxd3l"]
@@ -7,16 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://dqch1a4oqpfvh" path="res://scenes/user_interface.tscn" id="3_ecxld"]
 [ext_resource type="Script" path="res://scripts/Player/Hitbox.gd" id="5_agxan"]
 [ext_resource type="Texture2D" uid="uid://j84ti8t0h8fm" path="res://resources/Other/Arrow_BIG.png" id="6_3f40i"]
-[ext_resource type="AudioStream" uid="uid://dv7ekj3fh4tqh" path="res://resources/audio/Footstep-001.wav" id="7_iv7ii"]
 [ext_resource type="Texture2D" uid="uid://cdtv4dtg3ghtw" path="res://resources/Other/just_a_happy_black_pixel.png" id="7_kbr02"]
-[ext_resource type="AudioStream" uid="uid://npa7wp6wwopr" path="res://resources/audio/Footstep-002.wav" id="7_msxkq"]
-[ext_resource type="AudioStream" uid="uid://blm6aujrdkbv0" path="res://resources/audio/Footstep-003.wav" id="8_yywdc"]
-[ext_resource type="AudioStream" uid="uid://c47ran545ybfp" path="res://resources/audio/Footstep-004.wav" id="9_6ydlu"]
+[ext_resource type="AudioStream" uid="uid://dbbhfcfrngdpf" path="res://resources/audio/FS_Grass-001.wav" id="9_7nulv"]
+[ext_resource type="AudioStream" uid="uid://bt1u5i0pced6p" path="res://resources/audio/FS_Grass-002.wav" id="10_rij1k"]
+[ext_resource type="AudioStream" uid="uid://b00bj4fn3wpir" path="res://resources/audio/FS_Grass-003.wav" id="11_2h58i"]
+[ext_resource type="AudioStream" uid="uid://4ryv72x1pa1m" path="res://resources/audio/FS_Grass-004.wav" id="12_jewlr"]
+[ext_resource type="AudioStream" uid="uid://wamsruv8j7js" path="res://resources/audio/FS_Grass-005.wav" id="13_hlgty"]
 [ext_resource type="AudioStream" uid="uid://buje2x72v7lk5" path="res://resources/audio/tapeRewindSound.mp3" id="13_wd12t"]
 [ext_resource type="AudioStream" uid="uid://n1hlifqlba82" path="res://resources/audio/Artifact_1.wav" id="14_leq7f"]
+[ext_resource type="AudioStream" uid="uid://b6l2rvmll2g7h" path="res://resources/audio/FS_Grass-006.wav" id="14_nhrrk"]
 [ext_resource type="AudioStream" uid="uid://d2bdylbx6el7n" path="res://resources/audio/attack0Sound.wav" id="14_swtit"]
 [ext_resource type="AudioStream" uid="uid://d0mb3s6sorw1m" path="res://resources/audio/Artifact_2.wav" id="15_systt"]
 [ext_resource type="AudioStream" uid="uid://bcralgwk1xles" path="res://resources/audio/Artifact_3.wav" id="16_tqgi8"]
+[ext_resource type="AudioStream" uid="uid://b8y8p5iswhdml" path="res://resources/audio/Dash_test_1.wav" id="18_5knpv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otm6s"]
 radius = 20.0
@@ -379,17 +382,21 @@ radius = 60.0
 height = 120.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yof2t"]
-random_pitch = 1.5
+random_pitch = 2.0
 random_volume_offset_db = 4.0
-streams_count = 4
-stream_0/stream = ExtResource("7_iv7ii")
+streams_count = 6
+stream_0/stream = ExtResource("9_7nulv")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("7_msxkq")
+stream_1/stream = ExtResource("10_rij1k")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("8_yywdc")
+stream_2/stream = ExtResource("11_2h58i")
 stream_2/weight = 1.0
-stream_3/stream = ExtResource("9_6ydlu")
+stream_3/stream = ExtResource("12_jewlr")
 stream_3/weight = 1.0
+stream_4/stream = ExtResource("13_hlgty")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("14_nhrrk")
+stream_5/weight = 1.0
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -518,3 +525,6 @@ volume_db = 10.0
 
 [node name="attk4" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_tqgi8")
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_5knpv")
