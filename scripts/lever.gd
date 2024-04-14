@@ -20,10 +20,10 @@ func _process(delta):
 func toggle():
 	if on:
 		on = false
-		$Sprite2D.set_frame(0)
+		$Sprite2D.set_frame(2)
 	else:
 		on = true
-		$Sprite2D.set_frame(4)
+		$Sprite2D.set_frame(3)
 
 
 func _on_area_2d_body_entered(body):
