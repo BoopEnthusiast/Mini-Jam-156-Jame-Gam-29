@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://btcncnm8lyjnm"]
+[gd_scene load_steps=12 format=3 uid="uid://btcncnm8lyjnm"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_73tdu"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="3_ygrr7"]
 [ext_resource type="AudioStream" uid="uid://d0mb3s6sorw1m" path="res://resources/audio/Artifact_2.wav" id="6_8u420"]
 [ext_resource type="PackedScene" uid="uid://sobqn0lobnds" path="res://scenes/colosseum.tscn" id="6_vnv5y"]
-[ext_resource type="PackedScene" uid="uid://cbcnnmq68sns5" path="res://scenes/artefact.tscn" id="8_ncof4"]
+[ext_resource type="PackedScene" path="res://scenes/artefact.tscn" id="8_ncof4"]
 [ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="9_44ygi"]
+[ext_resource type="PackedScene" uid="uid://dpqmrxhikxcag" path="res://scenes/misc_fullscreen_effects.tscn" id="10_tak70"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66kvv"]
 radius = 1000.0
@@ -19,7 +20,6 @@ texture_filter = 1
 script = ExtResource("1_73tdu")
 
 [node name="Player" parent="." instance=ExtResource("1_w3ncm")]
-z_index = 1
 position = Vector2(61, -95)
 
 [node name="Map" parent="." instance=ExtResource("2_glwhr")]
@@ -56,6 +56,10 @@ position = Vector2(-11925, 2268)
 
 [node name="NPC" parent="." instance=ExtResource("9_44ygi")]
 position = Vector2(-4969, 31)
-dialogue = "How does the poem go again? You must go up before left, down, right! Baby swing it down again and to the left, hoo-rah!"
+
+[node name="MiscFullscreenEffects" parent="." instance=ExtResource("10_tak70")]
+z_index = 1
+z_as_relative = false
+scale = Vector2(10, 10)
 
 [connection signal="finished" from="BGMPlayer" to="." method="_on_bgm_player_finished"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3cstu7776j14"
-path="res://.godot/imported/Signs.png-bab41698857aa766e2e59ecb85bc5521.ctex"
+uid="uid://08nye25oj024"
+path="res://.godot/imported/hourglass_before_1.png-5cd1d2d48909522b301b6d1b20b79668.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/tilesets/Signs.png"
-dest_files=["res://.godot/imported/Signs.png-bab41698857aa766e2e59ecb85bc5521.ctex"]
+source_file="res://resources/hourglasses/hourglass_before_1.png"
+dest_files=["res://.godot/imported/hourglass_before_1.png-5cd1d2d48909522b301b6d1b20b79668.ctex"]
 
 [params]
 
