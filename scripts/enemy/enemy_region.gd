@@ -1,4 +1,4 @@
-class_name EnemyRegio	n
+class_name EnemyRegion
 extends Area2D
 
 var enemies: Array[Enemy]
