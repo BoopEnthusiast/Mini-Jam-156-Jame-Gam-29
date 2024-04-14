@@ -1,8 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://ce5gsclhrc62b"]
+[gd_scene load_steps=40 format=3 uid="uid://ce5gsclhrc62b"]
 
 [ext_resource type="Script" path="res://scripts/enemy/basic_enemy.gd" id="1_6jdg1"]
 [ext_resource type="Texture2D" uid="uid://b3hbepyp8htwv" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Slug_basic_sprite_sheet.png" id="3_7e0wf"]
-[ext_resource type="Texture2D" uid="uid://balfslx112l3n" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idle_and_jump_slug (1).png" id="3_hecge"]
+[ext_resource type="Texture2D" uid="uid://byar8xc2pv7p1" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idle_and_jump_slug (1).png" id="3_hecge"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rs0qx"]
 radius = 30.0
@@ -375,6 +375,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_q04i6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.557769)
+colors = PackedColorArray(0, 0, 0, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5tnaf"]
+gradient = SubResource("Gradient_q04i6")
+width = 96
+height = 48
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 2
 gravity_scale = 0.0
@@ -447,6 +459,11 @@ color = Color(0.960784, 0.396078, 0.396078, 1)
 [node name="targetting_timer" type="Timer" parent="."]
 
 [node name="stun_timer" type="Timer" parent="."]
+
+[node name="shadow" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 31)
+texture = SubResource("GradientTexture2D_5tnaf")
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="targetting_timer" to="." method="_on_targetting_timer_timeout"]
