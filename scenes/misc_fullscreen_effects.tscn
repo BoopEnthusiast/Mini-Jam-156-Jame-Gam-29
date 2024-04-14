@@ -1,16 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpqmrxhikxcag"]
 
-[sub_resource type="Gradient" id="Gradient_60qkx"]
+[sub_resource type="Gradient" id="Gradient_3y3wg"]
 offsets = PackedFloat32Array(0, 0.602, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.454902, 0.454902, 0.454902, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dk0es"]
-gradient = SubResource("Gradient_60qkx")
+gradient = SubResource("Gradient_3y3wg")
 width = 1152
 height = 1152
 repeat = 2
 
 [node name="MiscFullscreenEffects" type="Node2D"]
+visible = false
 top_level = true
 z_index = 3
 
