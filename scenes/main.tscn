@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btcncnm8lyjnm"]
+[gd_scene load_steps=13 format=3 uid="uid://btcncnm8lyjnm"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_73tdu"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d32f7wea28wmo" path="res://scenes/artefact.tscn" id="8_ncof4"]
 [ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="9_44ygi"]
 [ext_resource type="PackedScene" uid="uid://dpqmrxhikxcag" path="res://scenes/misc_fullscreen_effects.tscn" id="10_tak70"]
+[ext_resource type="PackedScene" uid="uid://dr5y35crbwxyw" path="res://scenes/puzzle_room.tscn" id="11_dukqg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66kvv"]
 radius = 1000.0
@@ -63,5 +64,8 @@ dialogue = "How does the poem go again? You must go up before left, down, right!
 z_index = 1
 z_as_relative = false
 scale = Vector2(10, 10)
+
+[node name="PuzzleRoom" parent="." instance=ExtResource("11_dukqg")]
+position = Vector2(0, -3000)
 
 [connection signal="finished" from="BGMPlayer" to="." method="_on_bgm_player_finished"]
