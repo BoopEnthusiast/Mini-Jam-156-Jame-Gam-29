@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq2duwyopbk0"]
+
+[ext_resource type="Script" path="res://scripts/lever.gd" id="1_7fg6v"]
+[ext_resource type="Texture2D" uid="uid://xb8rjbbcp8gf" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Chest.png" id="2_j3rgf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0s3g"]
+size = Vector2(16, 14)
+
+[node name="Lever" type="StaticBody2D"]
+position = Vector2(406, 275)
+script = ExtResource("1_7fg6v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_r0s3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j3rgf")
+hframes = 5
+vframes = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

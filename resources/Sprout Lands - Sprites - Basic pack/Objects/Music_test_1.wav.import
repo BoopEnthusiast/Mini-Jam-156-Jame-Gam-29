@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djyqd1h6axfym"
+path="res://.godot/imported/Music_test_1.wav-062d8e0b54b94f695139b495635dcfa1.sample"
+
+[deps]
+
+source_file="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Music_test_1.wav"
+dest_files=["res://.godot/imported/Music_test_1.wav-062d8e0b54b94f695139b495635dcfa1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
