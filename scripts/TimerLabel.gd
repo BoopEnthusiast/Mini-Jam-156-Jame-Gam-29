@@ -12,7 +12,7 @@ func _process(delta):
 
 func update():
 	var minutes = floor(Singleton.time_left / 60)
-	var seconds = floor(Singleton.time_left % 60)
+	var seconds = floor(int(Singleton.time_left) % 60)
 	
 	var minutes_str = str(minutes)
 	var seconds_str = str(seconds)

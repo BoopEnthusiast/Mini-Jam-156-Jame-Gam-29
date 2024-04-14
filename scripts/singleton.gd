@@ -4,7 +4,7 @@ signal reset_signal
 
 @onready var timer
 @onready var player_node
-@onready var time_left: int
+@onready var time_left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	time_left = floor(timer.time_left)
+	time_left = timer.time_left
 
 func _on_timer_timeout():
 	reset()
