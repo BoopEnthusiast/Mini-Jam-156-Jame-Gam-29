@@ -14,7 +14,7 @@ const ANIMATION_DIRECTION_MAP = {
 const STATE_ANIMATION_MAP = {
 	State.IDLE: "idle",
 	State.MOVING: "run",
-	State.CHARGING: "charging",
+	State.CHARGING: "charge",
 	State.LUNGING: "lunge",
 	State.KNOCKED_BACK: "stun",
 	State.STUNNED: "stun",
