@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy_region.gd" id="1_o4oxc"]
 [ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="2_y63l0"]
-[ext_resource type="PackedScene" uid="uid://d32f7wea28wmo" path="res://scenes/artefact.tscn" id="3_ks6ng"]
+[ext_resource type="PackedScene" uid="uid://cbcnnmq68sns5" path="res://scenes/artefact.tscn" id="3_ks6ng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpsdf"]
 size = Vector2(8234, 3000)
