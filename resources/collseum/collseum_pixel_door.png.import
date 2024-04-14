@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpdds4yo2gudr"
-path="res://.godot/imported/NPCs.png-7266e757ed19b8dfdc23d4d109ffee0d.ctex"
+uid="uid://crfix5h2jmqdw"
+path="res://.godot/imported/collseum_pixel_door.png-a5f73d9a0212cc0920fb487f109fffdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Sprout Lands - Sprites - Basic pack/Characters/NPCs.png"
-dest_files=["res://.godot/imported/NPCs.png-7266e757ed19b8dfdc23d4d109ffee0d.ctex"]
+source_file="res://resources/collseum/collseum_pixel_door.png"
+dest_files=["res://.godot/imported/collseum_pixel_door.png-a5f73d9a0212cc0920fb487f109fffdc.ctex"]
 
 [params]
 

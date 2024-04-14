@@ -113,7 +113,7 @@ func _on_attack_timer_timeout() -> void:
 		State.CHARGING:
 			state = State.LUNGING
 			attack_timer.start(lunge_time)
-			apply_central_impulse(attack_direction * lunge_speed * speed_multiplier)
+			apply_central_impulse(attack_direction * lunge_speed)
 		State.LUNGING:
 			state = State.STUNNED
 			attack_timer.start(recharge_time)

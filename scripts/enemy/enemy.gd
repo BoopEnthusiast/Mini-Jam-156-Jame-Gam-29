@@ -60,7 +60,7 @@ func move_to_target(_delta: float):
 		return
 		
 	var target = navigation_agent.get_next_path_position()
-	var new_velocity = global_position.direction_to(target) * speed * speed_multiplier
+	var new_velocity = global_position.direction_to(target) * speed
 	
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.velocity = new_velocity

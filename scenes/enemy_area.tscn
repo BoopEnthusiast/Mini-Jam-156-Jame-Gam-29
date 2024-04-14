@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmtrukd6ftiul"]
+
+[ext_resource type="TileSet" uid="uid://bvx4tpn7c2mxi" path="res://resources/tilesets/main_tile_set.tres" id="1_1ll3l"]
+
+[node name="EnemyArea" type="TileMap"]
+scale = Vector2(4, 4)
+tile_set = ExtResource("1_1ll3l")
+format = 2
