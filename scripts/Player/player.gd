@@ -3,9 +3,9 @@ class_name Player extends CharacterBody2D
 signal player_attacking(num:int)
 
 var allow_attack_0:bool = true
-var allow_attack_1:bool = false
-var allow_attack_2:bool = false
-var allow_attack_3:bool = false
+var allow_attack_1:bool = true
+var allow_attack_2:bool = true
+var allow_attack_3:bool = true
 
 var player_health = 100
 func hit_player(damage):
@@ -85,6 +85,11 @@ var currentFootstepCooldown = 0
 const footstepCooldown = 0.4
 const postResetFrames = 60
 var currentPostResetFrames = 0
+
+@onready var attk_1 = $attk1
+@onready var attk_2 = $attk2
+@onready var attk_3 = $attk3
+@onready var attk_4 = $attk4
 
 
 func _enter_tree():
@@ -251,7 +256,7 @@ func handleTimedActions(delta):
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0.7
 			var x = $attk4
-			x.play()
+			attk_4.play()
 			player_attacking.emit(3)
 
 

@@ -505,13 +505,14 @@ volume_db = -13.472
 
 [node name="attk1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_swtit")
-volume_db = -6.64
+volume_db = -18.821
 
 [node name="attk2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_leq7f")
 
 [node name="attk3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_systt")
+volume_db = 10.0
 
 [node name="attk4" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_tqgi8")
