@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/health_label.gd" id="1_5txs4"]
 [ext_resource type="Script" path="res://scripts/TimerLabel.gd" id="1_hixn6"]
-[ext_resource type="Theme" path="res://new_theme.tres" id="1_jow2k"]
+[ext_resource type="Theme" uid="uid://dek8c25lr3hv4" path="res://resources/main_theme.tres" id="1_jow2k"]
 [ext_resource type="Script" path="res://scripts/user_interface.gd" id="2_g5kh8"]
 [ext_resource type="Texture2D" uid="uid://infwwf58x7we" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_blue.png" id="4_gomc6"]
 [ext_resource type="Texture2D" uid="uid://478hiphiaef" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_red.png" id="6_8htqu"]
