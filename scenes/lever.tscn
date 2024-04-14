@@ -1,25 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://dq2duwyopbk0"]
 
 [ext_resource type="Script" path="res://scripts/lever.gd" id="1_7fg6v"]
-[ext_resource type="Texture2D" uid="uid://xb8rjbbcp8gf" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Chest.png" id="2_j3rgf"]
+[ext_resource type="Texture2D" uid="uid://ovxtrmkc6604" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Levers_on_and_off.png" id="2_sxe88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0s3g"]
-size = Vector2(16, 14)
+size = Vector2(12, 10)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_038lq"]
 radius = 13.0
+height = 28.0
 
 [node name="Lever" type="StaticBody2D"]
 script = ExtResource("1_7fg6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_r0s3g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_j3rgf")
-hframes = 5
-vframes = 2
+texture = ExtResource("2_sxe88")
+hframes = 4
+vframes = 4
+frame = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -30,6 +32,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_038lq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
