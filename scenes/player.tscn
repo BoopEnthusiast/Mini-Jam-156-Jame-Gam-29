@@ -373,7 +373,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1ptev")
 animation = &"SPINNYIDGAF"
 autoplay = "IdleDown"
-frame_progress = 0.560291
+frame_progress = 0.607607
 
 [node name="particle affects" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
@@ -428,6 +428,9 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="UI" parent="Camera2D/CanvasLayer" instance=ExtResource("3_ecxld")]
+
+[node name="Fullscreen effects" type="CanvasLayer" parent="Camera2D"]
+layer = 2
 
 [node name="Hitbox1" type="ShapeCast2D" parent="."]
 position = Vector2(0, 1)
