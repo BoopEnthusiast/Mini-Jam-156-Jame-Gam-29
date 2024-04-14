@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var which_gem: int = 0 # 0: blue, 1: red, 2: yellow
+@export_range(0, 2) var which_gem: int = 0 # 0: blue, 1: red, 2: yellow
 
 @onready var gem_sprites: Array[Sprite2D] = [$GemBlue, $GemRed, $GemYellow]
 

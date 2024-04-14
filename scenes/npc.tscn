@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv4myo2y4rjnx"]
+[gd_scene load_steps=5 format=3 uid="uid://dv4myo2y4rjnx"]
 
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_tca1e"]
+[ext_resource type="Script" path="res://scripts/text_panel.gd" id="2_m3wtd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cbgq"]
 radius = 215.002
@@ -13,13 +14,13 @@ script = ExtResource("1_tca1e")
 
 [node name="TalkArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkArea"]
+[node name="Collider" type="CollisionShape2D" parent="TalkArea"]
 shape = SubResource("CircleShape2D_5cbgq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ao04y")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextBackground" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -31,14 +32,22 @@ offset_right = 155.5
 offset_bottom = -269.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_m3wtd")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+[node name="Dialogue" type="RichTextLabel" parent="TextBackground"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Text here..."
+
+[node name="Timer" type="Timer" parent="TextBackground"]
+wait_time = 0.05
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="body_entered" from="TalkArea" to="." method="_on_talk_area_body_entered"]
 [connection signal="body_exited" from="TalkArea" to="." method="_on_talk_area_body_exited"]
+[connection signal="timeout" from="TextBackground/Timer" to="TextBackground" method="_on_timeout"]
