@@ -1,16 +1,27 @@
-[gd_scene load_steps=36 format=3 uid="uid://ce5gsclhrc62b"]
+[gd_scene load_steps=38 format=3 uid="uid://ce5gsclhrc62b"]
 
 [ext_resource type="Script" path="res://scripts/enemy/basic_enemy.gd" id="1_6jdg1"]
-[ext_resource type="Texture2D" uid="uid://c4srv6do46h77" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Free Chicken Sprites.png" id="2_ptebc"]
 [ext_resource type="Texture2D" uid="uid://b3hbepyp8htwv" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Slug_basic_sprite_sheet.png" id="3_7e0wf"]
 [ext_resource type="Texture2D" uid="uid://balfslx112l3n" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idle_and_jump_slug (1).png" id="3_hecge"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rs0qx"]
 radius = 30.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_enxyq"]
-atlas = ExtResource("2_ptebc")
-region = Rect2(32, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ae6n"]
+atlas = ExtResource("3_hecge")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hvs4"]
+atlas = ExtResource("3_hecge")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l4px"]
+atlas = ExtResource("3_hecge")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suvni"]
+atlas = ExtResource("3_hecge")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4gtf"]
 atlas = ExtResource("3_7e0wf")
@@ -126,14 +137,17 @@ region = Rect2(48, 48, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p4je5"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ae6n")
+}],
 "loop": true,
 "name": &"charge_down",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_enxyq")
+"texture": SubResource("AtlasTexture_7hvs4")
 }],
 "loop": true,
 "name": &"charge_left",
@@ -141,7 +155,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_enxyq")
+"texture": SubResource("AtlasTexture_0l4px")
 }],
 "loop": true,
 "name": &"charge_right",
@@ -149,7 +163,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_enxyq")
+"texture": SubResource("AtlasTexture_suvni")
 }],
 "loop": true,
 "name": &"charge_up",
@@ -384,8 +398,7 @@ debug_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_p4je5")
-animation = &"run_up"
-frame_progress = 0.19932
+animation = &"charge_up"
 
 [node name="hp" type="Control" parent="."]
 layout_mode = 3
