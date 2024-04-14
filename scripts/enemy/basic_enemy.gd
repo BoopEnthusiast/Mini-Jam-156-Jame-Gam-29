@@ -78,7 +78,8 @@ func _handle_animation():
 		animator.play(get_animation_name())
 
 func _set_movement_target():
-	navigation_agent.target_position = player.global_position
+	if navigation_agent.target_position.distance_to(player.global_position) > 50:
+		navigation_agent.target_position = player.global_position
 
 func _cancel_attack():
 	state = State.IDLE
