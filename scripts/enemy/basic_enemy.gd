@@ -14,7 +14,7 @@ const ANIMATION_DIRECTION_MAP = {
 const STATE_ANIMATION_MAP = {
 	State.IDLE: "idle",
 	State.MOVING: "run",
-	State.CHARGING: "charge",
+	State.CHARGING: "charging",
 	State.LUNGING: "lunge",
 	State.KNOCKED_BACK: "stun",
 	State.STUNNED: "stun",
@@ -54,13 +54,15 @@ func _process(delta: float) -> void:
 	_handle_animation()
 
 func _handle_animation():
-	if linear_velocity.dot(Vector2.RIGHT) > 0.5:
+	var normalised_velocity = linear_velocity.normalized()
+	
+	if normalised_velocity.dot(Vector2.RIGHT) > 0.5:
 		animation_direction = AnimationDirection.RIGHT
-	elif linear_velocity.dot(Vector2.UP) > 0.5:
+	elif normalised_velocity.dot(Vector2.UP) > 0.5:
 		animation_direction = AnimationDirection.UP
-	elif linear_velocity.dot(Vector2.LEFT) > 0.5:
+	elif normalised_velocity.dot(Vector2.LEFT) > 0.5:
 		animation_direction = AnimationDirection.LEFT
-	elif linear_velocity.dot(Vector2.DOWN) > 0.5:
+	elif normalised_velocity.dot(Vector2.DOWN) > 0.5:
 		animation_direction = AnimationDirection.DOWN
 	
 	if state == State.IDLE && linear_velocity.length() > 1:
