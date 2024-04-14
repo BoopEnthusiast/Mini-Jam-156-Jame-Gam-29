@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr5y35crbwxyw"]
+[gd_scene load_steps=6 format=3 uid="uid://dr5y35crbwxyw"]
 
 [ext_resource type="TileSet" uid="uid://bvx4tpn7c2mxi" path="res://resources/tilesets/main_tile_set.tres" id="1_o0tw2"]
 [ext_resource type="Script" path="res://scripts/puzzle_room.gd" id="2_dbnji"]
 [ext_resource type="PackedScene" uid="uid://dq2duwyopbk0" path="res://scenes/lever.tscn" id="2_s0y4g"]
-[ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="3_1c0rr"]
-[ext_resource type="PackedScene" uid="uid://xtoxogtkfs5f" path="res://scenes/artefact.tscn" id="5_58kvm"]
+[ext_resource type="PackedScene" uid="uid://cbcnnmq68sns5" path="res://scenes/artefact.tscn" id="5_58kvm"]
 [ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="6_4t2ls"]
 
 [node name="PuzzleRoom" type="TileMap"]
@@ -25,10 +24,6 @@ position = Vector2(157, 42.25)
 
 [node name="Lever3" parent="." instance=ExtResource("2_s0y4g")]
 position = Vector2(200, 40.25)
-
-[node name="Player" parent="." instance=ExtResource("3_1c0rr")]
-position = Vector2(144.75, 81.75)
-scale = Vector2(0.25, 0.25)
 
 [node name="Artefact" parent="." instance=ExtResource("5_58kvm")]
 visible = false
