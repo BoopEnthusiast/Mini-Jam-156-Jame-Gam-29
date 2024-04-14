@@ -10,7 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("attack1") and $Timer.is_stopped() and player_detected:
+	if Input.is_action_pressed("interact") and $Timer.is_stopped() and player_detected:
 		toggle()
 		$Timer.start();
 
