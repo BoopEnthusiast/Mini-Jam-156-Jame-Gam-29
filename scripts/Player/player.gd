@@ -1,6 +1,11 @@
 class_name Player extends CharacterBody2D
 
-var currentAttackType:int = 0
+
+var allow_attack_0:bool = true
+var allow_attack_1:bool = true
+var allow_attack_2:bool = true
+var allow_attack_3:bool = true
+
 var player_health = 100
 func hit_player(damage):
 	print("player hit")
@@ -43,18 +48,18 @@ var wishDir: Vector2 = Vector2.ZERO
 var animatedSprite: AnimatedSprite2D
 
 const animationsDir = [Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT,Vector2.UP] #lists the desired wishDir that fits the animation best
-const animationNames = ["RunDown","RunLeft","RunRight","RunUp","IdleDown","IdleLeft","IdleRight","IdleUp","AttackDown","AttackLeft","AttackRight","AttackUp"]
+const animationNames = ["RunDown","RunLeft","RunRight","RunUp","IdleDown","IdleLeft","IdleRight","IdleUp","AttackDown","AttackLeft","AttackRight","AttackUp","SPINNYIDGAF","SPINNYIDGAF","SPINNYIDGAF","SPINNYIDGAF"]
 const animationStride: int = 4 #total number of directions for animations
 
 var currentAction: int = 0 # 0 for idle, 1 for run, further actions are timedActions and their properties and implimentations are below
 var prevDir: Vector2 = Vector2.UP #used for determining idle directions
 
 #timed action system, used for attacks and possibly dashes/dodges in the future
-const timedActionNumber =         [2,3,4,5]   #refers to action number
-const timedActionDuration =       [0.125,0.125,0.25,0.125]#in secconds
-const timedActionDefaultCooldown =[1,2,0,1]
-const timedActionAnimationPosition =  [3,4,5,3] #represents the index * stride
-var timedActionCooldown =       [0,0,0,0]
+const timedActionNumber =         [2,3,4,5,6,7]   #refers to action number
+const timedActionDuration =       [0.125,0.125,0.25,0.125,1,0.125]#in secconds
+const timedActionDefaultCooldown =[1,2,0,1,2,3]
+const timedActionAnimationPosition =  [3,4,5,3,6.3] #represents the index * stride
+var timedActionCooldown =       [0,0,0,0,0,0]
 var timedActionRemainingDuration = 0
 
 const dashMaintain = 100
@@ -132,14 +137,20 @@ func handleTimedActions(delta):
 		currentAction = 0 #finnish 
 
 	var desiredAction: int = -1
-	if Input.is_action_pressed("attack1"):
+	if Input.is_action_pressed("attack1")&& allow_attack_0:
 		desiredAction = timedActionNumber[0]
 		
 	if Input.is_action_pressed("special"):
 		desiredAction = timedActionNumber[1]
 		
-	if Input.is_action_pressed("attack2"):
+	if Input.is_action_pressed("attack2")&& allow_attack_1:
 		desiredAction = timedActionNumber[3]
+	
+	if Input.is_action_pressed("attack3")&& allow_attack_2:
+		desiredAction = timedActionNumber[4]
+		
+	if Input.is_action_pressed("attack4")&& allow_attack_3:
+		desiredAction = timedActionNumber[5]
 	
 	#decrease cooldowns
 	for i in range(timedActionCooldown.size()): #WHAT THE HELL IS THIS SHIT, THIS IS NOT THE FOR LOOP I KNOW AND LOVE
@@ -164,6 +175,8 @@ func handleTimedActions(delta):
 		3:
 			velocity = wishDir*dashImpulse
 		5: 
+			weaponParticles1.color = Color.WHITE
+			weaponHitbox.rad = 60
 			weaponHitbox.length = 100
 			var desireRot: Vector2 = wishDir
 			if(desireRot == Vector2.ZERO):
@@ -172,8 +185,10 @@ func handleTimedActions(delta):
 			weaponParticles1.direction = desireRot
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
+			weaponHitbox.slowFactor = 0
 			
 		2:
+			weaponHitbox.rad = 60
 			weaponHitbox.length = 50
 			var desireRot: Vector2 = wishDir
 			if(desireRot == Vector2.ZERO):
@@ -182,7 +197,30 @@ func handleTimedActions(delta):
 			weaponParticles1.direction = desireRot
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
-			
+			weaponHitbox.slowFactor = 0
+		6:
+			weaponHitbox.rad = 90
+			weaponHitbox.length = 1
+			var desireRot: Vector2 = wishDir
+			if(desireRot == Vector2.ZERO):
+				desireRot = prevDir
+			weaponParticles1.emitting = false
+			weaponParticles1.direction = desireRot
+			weaponHitbox.updateRot(desireRot)
+			weaponHitbox.resetSwing()
+			weaponHitbox.slowFactor = 0
+		7:
+			weaponHitbox.rad = 60
+			weaponHitbox.length = 100
+			var desireRot: Vector2 = wishDir
+			if(desireRot == Vector2.ZERO):
+				desireRot = prevDir
+			weaponParticles1.emitting = true
+			weaponParticles1.direction = desireRot
+			weaponParticles1.color = Color.DARK_SLATE_BLUE
+			weaponHitbox.updateRot(desireRot)
+			weaponHitbox.resetSwing()
+			weaponHitbox.slowFactor = 0.7
 
 
 func handlePlayerAnimations():
@@ -226,7 +264,14 @@ func handlePlayerAnimations():
 			
 			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 2)] 
 			animatedSprite.play( animationNames[animationsDir.find(prevDir) + (animationStride * 2)] )
-
+		6:
+			weaponHitbox.tickHitbox(weaponDamage[2])
+			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 3)] 
+			animatedSprite.play( animationNames[animationsDir.find(prevDir) + (animationStride * 3)] )
+		7:
+			weaponHitbox.tickHitbox(weaponDamage[3])
+			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 2)] 
+			animatedSprite.play( animationNames[animationsDir.find(prevDir) + (animationStride * 2)] )
 func handlePlayerMovement():
 	wishDir.x = Input.get_axis("move_left","move_right")
 	wishDir.y = Input.get_axis("move_forward","move_back")

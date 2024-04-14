@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d26nxoa5ym6p8"]
+[gd_scene load_steps=53 format=3 uid="uid://d26nxoa5ym6p8"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_8721r"]
 [ext_resource type="Texture2D" uid="uid://dwh00xnapdk6" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Mushroom_man_character_sheet.png" id="2_lxd3l"]
@@ -131,6 +131,22 @@ region = Rect2(96, 48, 48, 48)
 atlas = ExtResource("2_lxd3l")
 region = Rect2(144, 48, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmvmn"]
+atlas = ExtResource("2_twqum")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82fam"]
+atlas = ExtResource("2_twqum")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6a65"]
+atlas = ExtResource("2_twqum")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elgia"]
+atlas = ExtResource("2_twqum")
+region = Rect2(48, 144, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ptev"]
 animations = [{
 "frames": [{
@@ -176,11 +192,6 @@ animations = [{
 "loop": true,
 "name": &"AttackUp",
 "speed": 10.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"GAAAAA",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -289,6 +300,23 @@ animations = [{
 "loop": true,
 "name": &"RunUp",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmvmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82fam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6a65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elgia")
+}],
+"loop": true,
+"name": &"SPINNYIDGAF",
+"speed": 10.0
 }]
 
 [sub_resource type="Curve" id="Curve_uuo0b"]
@@ -316,8 +344,8 @@ offsets = PackedFloat32Array(0.755396, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61p66"]
-radius = 57.7
-height = 115.4
+radius = 60.0
+height = 120.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yof2t"]
 streams_count = 4
@@ -343,8 +371,9 @@ shape = SubResource("CapsuleShape2D_otm6s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1ptev")
-animation = &"AttackUp"
+animation = &"SPINNYIDGAF"
 autoplay = "IdleDown"
+frame_progress = 0.607607
 
 [node name="particle affects" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
@@ -399,6 +428,9 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="UI" parent="Camera2D/CanvasLayer" instance=ExtResource("3_ecxld")]
+
+[node name="Fullscreen effects" type="CanvasLayer" parent="Camera2D"]
+layer = 2
 
 [node name="Hitbox1" type="ShapeCast2D" parent="."]
 position = Vector2(0, 1)
