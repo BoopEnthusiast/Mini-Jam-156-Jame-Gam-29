@@ -46,6 +46,7 @@ var animation_direction = AnimationDirection.RIGHT
 @onready var attack_timer: Timer = $attack_timer
 @onready var targetting_timer: Timer = $targetting_timer
 @onready var stun_timer: Timer = $stun_timer
+@onready var flash_timer: Timer = $AnimatedSprite2D/flash_timer
 @onready var attack_area = $attack_area
 @onready var death_effect = preload("res://scenes/enemy_death_effect.tscn")
 
@@ -102,7 +103,8 @@ func _do_attack(_delta: float):
 			state = State.CHARGING
 			charge_position = global_position
 			attack_timer.start(charge_time)
-			targetting_timer.start(charge_time * 3.0/4.0)
+			flash_timer.start(charge_time * 2.0/4.0)
+			targetting_timer.start(charge_time * 2.0/4.0)
 		State.LUNGING:
 				pass
 		_:
