@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/enemy/basic_enemy.gd" id="1_6jdg1"]
 [ext_resource type="Texture2D" uid="uid://dpy27ghk7cysh" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/slug_leap.png" id="2_6nv1k"]
 [ext_resource type="Texture2D" uid="uid://b3hbepyp8htwv" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Slug_basic_sprite_sheet.png" id="3_7e0wf"]
-[ext_resource type="Texture2D" uid="uid://balfslx112l3n" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idle_and_jump_slug (1).png" id="3_hecge"]
-[ext_resource type="Texture2D" uid="uid://6qq1sfs1syv3" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Walk_towards_us_slug.png" id="4_xb8bq"]
-[ext_resource type="Texture2D" uid="uid://bm4unl7upd2ts" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idlejumpwalk_away_slug.png" id="5_w0vho"]
+[ext_resource type="Texture2D" uid="uid://ohk3gld44qc3" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idle_and_jump_slug (1).png" id="3_hecge"]
+[ext_resource type="Texture2D" uid="uid://b883l4jawcl55" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Walk_towards_us_slug.png" id="4_xb8bq"]
+[ext_resource type="Texture2D" uid="uid://mbgx05ici832" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idlejumpwalk_away_slug.png" id="5_w0vho"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_flash.gd" id="7_dxxvu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rs0qx"]
