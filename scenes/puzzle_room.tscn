@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://bvx4tpn7c2mxi" path="res://resources/tilesets/main_tile_set.tres" id="1_o0tw2"]
 [ext_resource type="Script" path="res://scripts/puzzle_room.gd" id="2_dbnji"]
 [ext_resource type="PackedScene" uid="uid://dq2duwyopbk0" path="res://scenes/lever.tscn" id="2_s0y4g"]
-[ext_resource type="PackedScene" uid="uid://cbcnnmq68sns5" path="res://scenes/artefact.tscn" id="5_58kvm"]
+[ext_resource type="PackedScene" uid="uid://d32f7wea28wmo" path="res://scenes/artefact.tscn" id="5_58kvm"]
 [ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="6_4t2ls"]
 
 [node name="PuzzleRoom" type="TileMap"]
