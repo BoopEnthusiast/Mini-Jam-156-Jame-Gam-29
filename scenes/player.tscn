@@ -373,7 +373,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1ptev")
 animation = &"SPINNYIDGAF"
 autoplay = "IdleDown"
-frame_progress = 0.607607
+frame_progress = 0.2074
 
 [node name="particle affects" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
