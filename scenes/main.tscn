@@ -16,7 +16,6 @@ texture_filter = 1
 script = ExtResource("1_73tdu")
 
 [node name="Player" parent="." instance=ExtResource("1_w3ncm")]
-position = Vector2(61, -95)
 
 [node name="Map" parent="." instance=ExtResource("2_glwhr")]
 

@@ -113,7 +113,7 @@ func _on_attack_timer_timeout() -> void:
 		State.CHARGING:
 			state = State.LUNGING
 			attack_timer.start(lunge_time)
-			apply_central_impulse(attack_direction * lunge_speed)
+			apply_central_impulse(attack_direction * lunge_speed * speed_multiplier)
 		State.LUNGING:
 			state = State.STUNNED
 			attack_timer.start(recharge_time)
@@ -173,3 +173,9 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		_knockback(body.global_position.direction_to(global_position), knockback_strength, knockback_duration, stun_duration / 2)
 		
 	Singleton.player_node.hit_player(attack_damage)
+
+func apply_slow(factor: float):
+	speed *= factor
+	knockback_strength *= factor
+	lunge_speed *= factor
+	linear_damp *= factor
