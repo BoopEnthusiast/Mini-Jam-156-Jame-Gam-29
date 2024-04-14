@@ -1,26 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://c65x73huut1wr"]
+[gd_scene load_steps=3 format=3 uid="uid://dpqmrxhikxcag"]
 
 [sub_resource type="Gradient" id="Gradient_60qkx"]
 offsets = PackedFloat32Array(0, 0.602, 1)
-colors = PackedColorArray(0, 0, 0, 0.203922, 0.454902, 0.454902, 0.454902, 0.219608, 0, 0, 0, 0.223529)
+colors = PackedColorArray(0, 0, 0, 1, 0.454902, 0.454902, 0.454902, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dk0es"]
 gradient = SubResource("Gradient_60qkx")
 width = 1152
-height = 648
-repeat = 1
+height = 1152
+repeat = 2
 
 [node name="MiscFullscreenEffects" type="Node2D"]
 top_level = true
 z_index = 3
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = 5
-scroll_base_offset = Vector2(576, 324)
+layer = 100
+follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(576, 324)
+motion_mirroring = Vector2(1152, 1152)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = SubResource("GradientTexture2D_dk0es")
