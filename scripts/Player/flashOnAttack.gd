@@ -9,12 +9,12 @@ func _ready():
 
 func _process(delta):
 	if modulate != Color.WHITE:
-		modulate = modulate + Color(0.1,0.1,0.1)
+		modulate = lerp(modulate,Color.WHITE,0.005)
 	
 	
 	if setup:
 		return
-		
+	setup = true
 	var player = Singleton.player_node
 	player.player_attacking.connect(player_has_attacked)
 
