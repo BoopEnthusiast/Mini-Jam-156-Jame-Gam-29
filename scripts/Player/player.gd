@@ -43,18 +43,18 @@ var wishDir: Vector2 = Vector2.ZERO
 var animatedSprite: AnimatedSprite2D
 
 const animationsDir = [Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT,Vector2.UP] #lists the desired wishDir that fits the animation best
-const animationNames = ["RunDown","RunLeft","RunRight","RunUp","IdleDown","IdleLeft","IdleRight","IdleUp","AttackDown","AttackLeft","AttackRight","AttackUp"]
+const animationNames = ["RunDown","RunLeft","RunRight","RunUp","IdleDown","IdleLeft","IdleRight","IdleUp","AttackDown","AttackLeft","AttackRight","AttackUp","SPINNYIDGAF","SPINNYIDGAF","SPINNYIDGAF","SPINNYIDGAF"]
 const animationStride: int = 4 #total number of directions for animations
 
 var currentAction: int = 0 # 0 for idle, 1 for run, further actions are timedActions and their properties and implimentations are below
 var prevDir: Vector2 = Vector2.UP #used for determining idle directions
 
 #timed action system, used for attacks and possibly dashes/dodges in the future
-const timedActionNumber =         [2,3,4,5]   #refers to action number
-const timedActionDuration =       [0.125,0.125,0.25,0.125]#in secconds
-const timedActionDefaultCooldown =[1,2,0,1]
-const timedActionAnimationPosition =  [3,4,5,3] #represents the index * stride
-var timedActionCooldown =       [0,0,0,0]
+const timedActionNumber =         [2,3,4,5,6]   #refers to action number
+const timedActionDuration =       [0.125,0.125,0.25,0.125,1]#in secconds
+const timedActionDefaultCooldown =[1,2,0,1,2]
+const timedActionAnimationPosition =  [3,4,5,3,6] #represents the index * stride
+var timedActionCooldown =       [0,0,0,0,0]
 var timedActionRemainingDuration = 0
 
 const dashMaintain = 100
@@ -141,6 +141,9 @@ func handleTimedActions(delta):
 	if Input.is_action_pressed("attack2"):
 		desiredAction = timedActionNumber[3]
 	
+	if Input.is_action_pressed("attack3"):
+		desiredAction = timedActionNumber[4]
+	
 	#decrease cooldowns
 	for i in range(timedActionCooldown.size()): #WHAT THE HELL IS THIS SHIT, THIS IS NOT THE FOR LOOP I KNOW AND LOVE
 		if timedActionCooldown[i] > 0:          #I CANT BELIEVE IM SAYING THIS BUT I ACTUALLY MISS JAVA
@@ -164,6 +167,7 @@ func handleTimedActions(delta):
 		3:
 			velocity = wishDir*dashImpulse
 		5: 
+			weaponHitbox.rad = 60
 			weaponHitbox.length = 100
 			var desireRot: Vector2 = wishDir
 			if(desireRot == Vector2.ZERO):
@@ -174,6 +178,7 @@ func handleTimedActions(delta):
 			weaponHitbox.resetSwing()
 			
 		2:
+			weaponHitbox.rad = 60
 			weaponHitbox.length = 50
 			var desireRot: Vector2 = wishDir
 			if(desireRot == Vector2.ZERO):
@@ -182,7 +187,16 @@ func handleTimedActions(delta):
 			weaponParticles1.direction = desireRot
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
-			
+		6:
+			weaponHitbox.rad = 90
+			weaponHitbox.length = 1
+			var desireRot: Vector2 = wishDir
+			if(desireRot == Vector2.ZERO):
+				desireRot = prevDir
+			weaponParticles1.emitting = false
+			weaponParticles1.direction = desireRot
+			weaponHitbox.updateRot(desireRot)
+			weaponHitbox.resetSwing()
 
 
 func handlePlayerAnimations():
@@ -226,7 +240,10 @@ func handlePlayerAnimations():
 			
 			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 2)] 
 			animatedSprite.play( animationNames[animationsDir.find(prevDir) + (animationStride * 2)] )
-
+		6:
+			weaponHitbox.tickHitbox(weaponDamage[0])
+			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 3)] 
+			animatedSprite.play( animationNames[animationsDir.find(prevDir) + (animationStride * 3)] )
 func handlePlayerMovement():
 	wishDir.x = Input.get_axis("move_left","move_right")
 	wishDir.y = Input.get_axis("move_forward","move_back")
