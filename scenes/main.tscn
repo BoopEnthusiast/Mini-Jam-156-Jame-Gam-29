@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjpgi7tnneeol"]
+[gd_scene load_steps=12 format=3 uid="uid://bjpgi7tnneeol"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_73tdu"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
@@ -14,16 +14,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66kvv"]
 radius = 1000.0
 height = 2000.0
-
-[sub_resource type="Gradient" id="Gradient_60qkx"]
-offsets = PackedFloat32Array(0, 0.602, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.454902, 0.454902, 0.454902, 0, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qy527"]
-gradient = SubResource("Gradient_60qkx")
-width = 1152
-height = 1152
-repeat = 2
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -72,16 +62,5 @@ visible = false
 z_index = 1
 z_as_relative = false
 scale = Vector2(10, 10)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = 100
-follow_viewport_enabled = true
-follow_viewport_scale = 2.0
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1152, 1152)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = SubResource("GradientTexture2D_qy527")
 
 [connection signal="finished" from="BGMPlayer" to="." method="_on_bgm_player_finished"]
