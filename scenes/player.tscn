@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://d26nxoa5ym6p8"]
+[gd_scene load_steps=49 format=3 uid="uid://d26nxoa5ym6p8"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_8721r"]
 [ext_resource type="Texture2D" uid="uid://dwh00xnapdk6" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Mushroom_man_character_sheet.png" id="2_lxd3l"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://o1d8hl6yy4xf" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="3_6od3l"]
 [ext_resource type="PackedScene" uid="uid://dqch1a4oqpfvh" path="res://scenes/user_interface.tscn" id="3_ecxld"]
 [ext_resource type="Script" path="res://scripts/Player/Hitbox.gd" id="5_agxan"]
+[ext_resource type="AudioStream" uid="uid://dv7ekj3fh4tqh" path="res://resources/audio/Footstep-001.wav" id="7_iv7ii"]
+[ext_resource type="AudioStream" uid="uid://npa7wp6wwopr" path="res://resources/audio/Footstep-002.wav" id="7_msxkq"]
+[ext_resource type="AudioStream" uid="uid://blm6aujrdkbv0" path="res://resources/audio/Footstep-003.wav" id="8_yywdc"]
+[ext_resource type="AudioStream" uid="uid://c47ran545ybfp" path="res://resources/audio/Footstep-004.wav" id="9_6ydlu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otm6s"]
 radius = 19.0
@@ -315,6 +319,17 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 radius = 57.7
 height = 115.4
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yof2t"]
+streams_count = 4
+stream_0/stream = ExtResource("7_iv7ii")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_msxkq")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_yywdc")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("9_6ydlu")
+stream_3/weight = 1.0
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 4
@@ -394,4 +409,11 @@ collision_mask = 255
 collide_with_areas = true
 script = ExtResource("5_agxan")
 
-[node name="sound0" type="AudioStreamPlayer2D" parent="."]
+[node name="sound1" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_yof2t")
+
+[node name="sound2" type="AudioStreamPlayer2D" parent="."]
+visible = false
+
+[node name="sound3" type="AudioStreamPlayer2D" parent="."]
+visible = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr5y35crbwxyw"]
+[gd_scene load_steps=4 format=3 uid="uid://dr5y35crbwxyw"]
 
 [ext_resource type="TileSet" uid="uid://bvx4tpn7c2mxi" path="res://resources/tilesets/main_tile_set.tres" id="1_o0tw2"]
 [ext_resource type="PackedScene" uid="uid://dq2duwyopbk0" path="res://scenes/lever.tscn" id="2_s0y4g"]
+[ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="3_1c0rr"]
 
 [node name="PuzzleRoom" type="TileMap"]
 tile_set = ExtResource("1_o0tw2")
@@ -16,3 +17,6 @@ position = Vector2(377, 275)
 
 [node name="Lever2" parent="." instance=ExtResource("2_s0y4g")]
 position = Vector2(415, 277)
+
+[node name="Player" parent="." instance=ExtResource("3_1c0rr")]
+position = Vector2(352, 328)

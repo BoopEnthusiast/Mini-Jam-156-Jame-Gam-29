@@ -70,7 +70,11 @@ var weaponHitbox: player_hitbox
 const weaponDamage = 3
 @onready var trialParticles = $"AnimatedSprite2D/particle affects/trailParticles"
 @onready var weaponParticles1: CPUParticles2D = $"AnimatedSprite2D/particle affects/WeaponParticles1"
-@onready var audio0: AudioStreamPlayer2D = $sound0
+@onready var audio1: AudioStreamPlayer2D = $sound1
+
+var currentFootstepCooldown = 0
+const footstepCooldown = 0.4
+
 func _ready():
 	Singleton.player_node = self
 	animatedSprite = $AnimatedSprite2D
@@ -124,6 +128,8 @@ func handleResetting():
 
 func handleTimedActions(delta):
 	# map inputs to action
+	if currentFootstepCooldown >= 0:
+		currentFootstepCooldown -= delta
 	var debug = 0
 	if debug == 1:
 		print(timedActionRemainingDuration)
@@ -176,8 +182,14 @@ func handlePlayerAnimations():
 	if currentAction == 1 || currentAction == 0:
 		if wishDir.length() == 0:
 			currentAction = 0
+			audio1.stop()
 		else:
 			currentAction = 1
+			if(currentFootstepCooldown <= 0 ):
+				audio1.play()
+				currentFootstepCooldown =  footstepCooldown
+	else:
+		audio1.stop()
 	#THERE IS NO SWITCH STATEMENT IN THIS GOD AWFUL LANGUAGE>?>???? LORD HAVE MERCY GET ME OUT
 	#nevermind theres match, match deez??? deee
 	animatedSprite.modulate = Color.WHITE
