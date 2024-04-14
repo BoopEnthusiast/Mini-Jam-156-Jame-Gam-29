@@ -74,7 +74,7 @@ const weaponDamage = [2,3,4,5]
 @onready var trialParticles = $"AnimatedSprite2D/particle affects/trailParticles"
 @onready var weaponParticles1: CPUParticles2D = $"AnimatedSprite2D/particle affects/WeaponParticles1"
 @onready var audio1: AudioStreamPlayer2D = $sound1
-
+@onready var theVeryImportantHappyBlackPixelAndHisVerySeriousParent_TheBigArrow_UsedForFullScreenAffectsWhenDie = $Camera2D/CanvasLayer/UI/ArrowBig
 var currentFootstepCooldown = 0
 const footstepCooldown = 0.4
 
@@ -110,8 +110,9 @@ func handleResetting():
 		resetting = false
 		animatedSprite.modulate = Color(1,1,1,1)
 		Singleton.reset()
+		theVeryImportantHappyBlackPixelAndHisVerySeriousParent_TheBigArrow_UsedForFullScreenAffectsWhenDie.visible = false
 		return
-	
+	theVeryImportantHappyBlackPixelAndHisVerySeriousParent_TheBigArrow_UsedForFullScreenAffectsWhenDie.visible = true
 	var pos
 	var hlth
 	var numFramesToSkip = ((initialResetSize /60)/ResetDurationDesired)

@@ -443,10 +443,6 @@ position = Vector2(570, 287)
 scale = Vector2(5000, 5000)
 texture = ExtResource("7_kbr02")
 
-[node name="Fullscreen effects" type="CanvasLayer" parent="Camera2D"]
-layer = 2
-follow_viewport_enabled = true
-
 [node name="Hitbox1" type="ShapeCast2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_61p66")
