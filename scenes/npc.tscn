@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv4myo2y4rjnx"]
+[gd_scene load_steps=4 format=3 uid="uid://dv4myo2y4rjnx"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_tca1e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cbgq"]
 radius = 215.002
@@ -7,6 +9,7 @@ radius = 215.002
 size = Vector2(88, 164)
 
 [node name="NPC" type="StaticBody2D"]
+script = ExtResource("1_tca1e")
 
 [node name="TalkArea" type="Area2D" parent="."]
 
@@ -15,3 +18,27 @@ shape = SubResource("CircleShape2D_5cbgq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ao04y")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -385.0
+offset_right = 155.5
+offset_bottom = -269.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="TalkArea" to="." method="_on_talk_area_body_entered"]
+[connection signal="body_exited" from="TalkArea" to="." method="_on_talk_area_body_exited"]
