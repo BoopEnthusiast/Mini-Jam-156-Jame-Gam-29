@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://btcncnm8lyjnm"]
+[gd_scene load_steps=8 format=3 uid="uid://btcncnm8lyjnm"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_73tdu"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
 [ext_resource type="PackedScene" uid="uid://hik6w44brocv" path="res://scenes/map.tscn" id="2_glwhr"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_region.gd" id="3_046bj"]
@@ -12,13 +13,13 @@ height = 2000.0
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_73tdu")
 
 [node name="Player" parent="." instance=ExtResource("1_w3ncm")]
 
 [node name="Map" parent="." instance=ExtResource("2_glwhr")]
 
 [node name="enemy_region_1" type="Area2D" parent="."]
-position = Vector2(4167, 0)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_046bj")
