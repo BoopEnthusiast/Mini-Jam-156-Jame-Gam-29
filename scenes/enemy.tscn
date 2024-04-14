@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/enemy/basic_enemy.gd" id="1_6jdg1"]
 [ext_resource type="Texture2D" uid="uid://dpy27ghk7cysh" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/slug_leap.png" id="2_6nv1k"]
 [ext_resource type="Texture2D" uid="uid://b3hbepyp8htwv" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Slug_basic_sprite_sheet.png" id="3_7e0wf"]
-[ext_resource type="Texture2D" uid="uid://balfslx112l3n" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idle_and_jump_slug (1).png" id="3_hecge"]
-[ext_resource type="Texture2D" uid="uid://f7n3pu1fvvq5" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Walk_towards_us_slug.png" id="4_xb8bq"]
-[ext_resource type="Texture2D" uid="uid://d3sxnfvat4mer" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idlejumpwalk_away_slug.png" id="5_w0vho"]
+[ext_resource type="Texture2D" uid="uid://ohk3gld44qc3" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idle_and_jump_slug (1).png" id="3_hecge"]
+[ext_resource type="Texture2D" uid="uid://b883l4jawcl55" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Walk_towards_us_slug.png" id="4_xb8bq"]
+[ext_resource type="Texture2D" uid="uid://mbgx05ici832" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Idlejumpwalk_away_slug.png" id="5_w0vho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rs0qx"]
 radius = 35.0
@@ -454,13 +454,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_q04i6"]
+[sub_resource type="Gradient" id="Gradient_6c0k8"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.557769)
 colors = PackedColorArray(0, 0, 0, 0.501961, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5tnaf"]
-gradient = SubResource("Gradient_q04i6")
+gradient = SubResource("Gradient_6c0k8")
 width = 96
 height = 48
 fill = 1
@@ -489,7 +489,6 @@ shape = SubResource("CircleShape2D_rs0qx")
 avoidance_enabled = true
 radius = 30.0
 max_speed = 10000.0
-debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
