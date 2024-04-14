@@ -2,15 +2,15 @@
 
 [sub_resource type="Gradient" id="Gradient_wsbdj"]
 offsets = PackedFloat32Array(0, 0.502, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0.501961, 0.501961, 0.501961, 0.168627, 0.501961, 0.501961, 0.501961, 0)
+colors = PackedColorArray(0, 0, 0, 0, 0.52549, 0.52549, 0.52549, 0.439216, 0.501961, 0.501961, 0.501961, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2q7y6"]
 noise_type = 3
 metadata/_preview_in_3d_space_ = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ixua2"]
-width = 2160
-height = 2160
+width = 4320
+height = 4320
 seamless = true
 color_ramp = SubResource("Gradient_wsbdj")
 noise = SubResource("FastNoiseLite_2q7y6")
@@ -25,6 +25,15 @@ layer = 100
 follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.125, 0.125)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(10, 10)
+texture = SubResource("NoiseTexture2D_ixua2")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(10, 10)
 texture = SubResource("NoiseTexture2D_ixua2")
