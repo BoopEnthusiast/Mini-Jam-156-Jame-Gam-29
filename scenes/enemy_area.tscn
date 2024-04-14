@@ -1,8 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmtrukd6ftiul"]
+[gd_scene load_steps=4 format=3 uid="uid://cfkrt51o2wk4g"]
 
-[ext_resource type="TileSet" uid="uid://bvx4tpn7c2mxi" path="res://resources/tilesets/main_tile_set.tres" id="1_1ll3l"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_region.gd" id="1_o4oxc"]
+[ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="2_y63l0"]
 
-[node name="EnemyArea" type="TileMap"]
-scale = Vector2(4, 4)
-tile_set = ExtResource("1_1ll3l")
-format = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpsdf"]
+size = Vector2(8234, 3000)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="region_1" type="Area2D" parent="."]
+position = Vector2(1203, 9)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_o4oxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="region_1"]
+position = Vector2(2872, -2)
+shape = SubResource("RectangleShape2D_dpsdf")
+
+[node name="RigidBody2D" parent="region_1" instance=ExtResource("2_y63l0")]
+position = Vector2(477, -490)
+
+[node name="RigidBody2D2" parent="region_1" instance=ExtResource("2_y63l0")]
+position = Vector2(528, -999)
+
+[node name="RigidBody2D3" parent="region_1" instance=ExtResource("2_y63l0")]
+position = Vector2(155, -174)
+
+[node name="RigidBody2D4" parent="region_1" instance=ExtResource("2_y63l0")]
+position = Vector2(-78, 375)
+
+[node name="RigidBody2D5" parent="region_1" instance=ExtResource("2_y63l0")]
+position = Vector2(-469, 780)
+
+[node name="RigidBody2D6" parent="region_1" instance=ExtResource("2_y63l0")]
+position = Vector2(85, 925)
+
+[node name="RigidBody2D7" parent="region_1" instance=ExtResource("2_y63l0")]
+position = Vector2(619, 618)
+
+[node name="region_2" type="Area2D" parent="."]
+position = Vector2(2966, 215)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_o4oxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="region_2"]
+position = Vector2(2853, 67)
+shape = SubResource("RectangleShape2D_dpsdf")
+
+[node name="RigidBody2D" parent="region_2" instance=ExtResource("2_y63l0")]
+position = Vector2(441, -554)
+
+[node name="RigidBody2D2" parent="region_2" instance=ExtResource("2_y63l0")]
+position = Vector2(528, -999)
+
+[node name="RigidBody2D3" parent="region_2" instance=ExtResource("2_y63l0")]
+position = Vector2(-285, -781)
+
+[node name="RigidBody2D4" parent="region_2" instance=ExtResource("2_y63l0")]
+position = Vector2(-766, 870)
+
+[node name="RigidBody2D5" parent="region_2" instance=ExtResource("2_y63l0")]
+position = Vector2(-74, 394)
+
+[node name="RigidBody2D6" parent="region_2" instance=ExtResource("2_y63l0")]
+position = Vector2(794, 169)
+
+[node name="RigidBody2D7" parent="region_2" instance=ExtResource("2_y63l0")]
+position = Vector2(619, 618)
+
+[node name="region_3" type="Area2D" parent="."]
+position = Vector2(5609, 484)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_o4oxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="region_3"]
+position = Vector2(2853, 67)
+shape = SubResource("RectangleShape2D_dpsdf")
+
+[node name="RigidBody2D" parent="region_3" instance=ExtResource("2_y63l0")]
+position = Vector2(448, -321)
+
+[node name="RigidBody2D2" parent="region_3" instance=ExtResource("2_y63l0")]
+position = Vector2(64, -494)
+
+[node name="RigidBody2D3" parent="region_3" instance=ExtResource("2_y63l0")]
+position = Vector2(-285, -781)
+
+[node name="RigidBody2D4" parent="region_3" instance=ExtResource("2_y63l0")]
+position = Vector2(-766, 870)
+
+[node name="RigidBody2D5" parent="region_3" instance=ExtResource("2_y63l0")]
+position = Vector2(-74, 394)
+
+[node name="RigidBody2D6" parent="region_3" instance=ExtResource("2_y63l0")]
+position = Vector2(473, 187)
+
+[node name="RigidBody2D7" parent="region_3" instance=ExtResource("2_y63l0")]
+position = Vector2(292, 439)
