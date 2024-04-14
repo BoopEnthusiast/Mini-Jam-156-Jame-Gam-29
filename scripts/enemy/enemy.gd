@@ -88,5 +88,8 @@ func _do_attack(_delta: float) -> void:
 func take_damage(damage: float):
 	pass
 
+func apply_slow(factor: float, duration: float):
+	pass
+
 func _on_death():
 	pass
