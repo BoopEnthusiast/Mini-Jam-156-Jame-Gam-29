@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 var on = false
+var player_detected = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,10 +10,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("attack1"):
-		if $Timer.is_stopped():
-			toggle()
-			$Timer.start();
+	if Input.is_action_pressed("attack1") and $Timer.is_stopped() and player_detected:
+		toggle()
+		$Timer.start();
 
 
 func toggle():
@@ -22,3 +22,13 @@ func toggle():
 	else:
 		on = true
 		$Sprite2D.set_frame(0)
+
+
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		player_detected = true
+
+
+func _on_area_2d_body_exited(body):
+	if body is Player:
+		player_detected = false
