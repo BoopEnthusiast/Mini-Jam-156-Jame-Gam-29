@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://bcralgwk1xles" path="res://resources/audio/Artifact_3.wav" id="16_tqgi8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otm6s"]
-radius = 25.0
+radius = 20.0
 height = 74.34
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tlkk8"]
