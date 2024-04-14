@@ -30,12 +30,8 @@ func _physics_process(_delta: float) -> void:
 		for enemy in enemies:
 			if is_instance_valid(enemy):
 				enemy.is_agroed = true
-			else:
-				enemies.erase(enemy)
 	else:
 		is_active = false
 		for enemy in enemies:
 			if is_instance_valid(enemy):
 				enemy.is_agroed = false
-			else:
-				enemies.erase(enemy)
