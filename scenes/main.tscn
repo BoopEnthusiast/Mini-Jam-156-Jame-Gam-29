@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btcncnm8lyjnm"]
+[gd_scene load_steps=12 format=3 uid="uid://bjpgi7tnneeol"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_73tdu"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
@@ -58,6 +58,7 @@ position = Vector2(-11925, 2268)
 position = Vector2(-4969, 31)
 
 [node name="MiscFullscreenEffects" parent="." instance=ExtResource("10_tak70")]
+visible = false
 z_index = 1
 z_as_relative = false
 scale = Vector2(10, 10)
