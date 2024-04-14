@@ -396,10 +396,10 @@ autoplay = "IdleUp"
 
 [node name="particle affects" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
+z_index = -1
 
 [node name="trailParticles" type="CPUParticles2D" parent="AnimatedSprite2D/particle affects"]
 show_behind_parent = true
-z_as_relative = false
 position = Vector2(0, 4.25)
 scale = Vector2(0.25, 0.25)
 skew = -0.0436332
