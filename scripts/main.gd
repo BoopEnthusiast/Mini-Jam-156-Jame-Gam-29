@@ -1,11 +1,11 @@
 extends Node
 
+@onready var bgm_player = $BGMPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Singleton.game_won.connect(game_has_been_won)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func game_has_been_won() -> void:
+	bgm_player.stop()

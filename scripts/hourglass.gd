@@ -6,7 +6,7 @@ var current_attack_index: int = 0
 
 @onready var gems = [$BlueGem, $RedGem, $YellowGem]
 @onready var crack_frames = $CrackFrames
-
+@onready var shattering_sound = $ShatteringSound
 
 func _ready():
 	Singleton.player_node.player_attacking.connect(player_has_attacked)
@@ -33,6 +33,7 @@ func player_has_attacked(which_attack: int) -> void:
 			Singleton.game_won.emit()
 			Singleton.has_game_won = false
 			crack_frames.play("break")
+			shattering_sound.play()
 	else:
 		current_attack_index = 0
 	

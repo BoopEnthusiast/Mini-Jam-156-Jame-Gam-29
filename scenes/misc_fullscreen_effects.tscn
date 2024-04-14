@@ -21,7 +21,7 @@ top_level = true
 z_index = 3
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = 100
+layer = 4
 follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
