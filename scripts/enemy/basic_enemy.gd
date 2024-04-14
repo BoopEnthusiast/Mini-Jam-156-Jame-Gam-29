@@ -39,11 +39,14 @@ var damage_direction: Vector2
 var state = State.IDLE
 var animation_direction = AnimationDirection.RIGHT
 
+@onready var current_stun_duration = stun_duration
+
 @onready var player = Singleton.player_node
 @onready var animator: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_timer: Timer = $attack_timer
 @onready var targetting_timer: Timer = $targetting_timer
 @onready var stun_timer: Timer = $stun_timer
+@onready var attack_area = $attack_area
 @onready var death_effect = preload("res://scenes/enemy_death_effect.tscn")
 
 func get_animation_name() -> String:
@@ -124,7 +127,7 @@ func _on_stun_timer_timeout() -> void:
 	match state:
 		State.KNOCKED_BACK:
 			state = State.STUNNED
-			stun_timer.start(stun_duration)
+			stun_timer.start(current_stun_duration)
 		State.STUNNED:
 			state = State.IDLE
 			_use_navigation = true
@@ -134,15 +137,8 @@ func _on_targetting_timer_timeout() -> void:
 	targetting_timer.stop()
 
 func take_damage(damage: float):
-	attack_timer.stop()
-	is_attacking = false
-	_use_navigation = false
-	
-	state = State.KNOCKED_BACK
-	stun_timer.start(knockback_duration)
-	
 	damage_direction = player.global_position.direction_to(global_position)
-	apply_central_impulse(damage_direction * knockback_strength)
+	_knockback(damage_direction, knockback_strength, knockback_duration, stun_duration)
 	
 	# TODO: Damage flash
 	
@@ -156,3 +152,24 @@ func _on_death():
 	effect.global_position = global_position
 	get_tree().root.get_child(1).add_child(effect)
 	queue_free()
+
+func _knockback(direction: Vector2, strength: float, duration: float, stun_duration: float):
+	attack_timer.stop()
+	is_attacking = false
+	_use_navigation = false
+	
+	current_stun_duration = stun_duration
+	
+	state = State.KNOCKED_BACK
+	stun_timer.start(duration)
+	
+	apply_central_impulse(direction * strength)
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body != Singleton.player_node:
+		return
+	
+	if state != State.LUNGING:
+		_knockback(body.global_position.direction_to(global_position), knockback_strength, knockback_duration, stun_duration / 2)
+		
+	Singleton.player_node.hit_player(attack_damage)

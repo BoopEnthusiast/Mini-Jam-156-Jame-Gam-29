@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://ce5gsclhrc62b"]
+[gd_scene load_steps=36 format=3 uid="uid://ce5gsclhrc62b"]
 
 [ext_resource type="Script" path="res://scripts/enemy/basic_enemy.gd" id="1_6jdg1"]
 [ext_resource type="Texture2D" uid="uid://c4srv6do46h77" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Free Chicken Sprites.png" id="2_ptebc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rs0qx"]
-radius = 30.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_enxyq"]
 atlas = ExtResource("2_ptebc")

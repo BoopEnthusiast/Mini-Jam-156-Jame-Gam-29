@@ -1,4 +1,4 @@
-class_name EnemyRegion
+class_name EnemyRegio	n
 extends Area2D
 
 var enemies: Array[Enemy]
@@ -28,8 +28,10 @@ func _physics_process(_delta: float) -> void:
 		
 		is_active = true
 		for enemy in enemies:
-			enemy.is_agroed = true
+			if enemy:
+				enemy.is_agroed = true
 	else:
 		is_active = false
 		for enemy in enemies:
-			enemy.is_agroed = false
+			if enemy:
+				enemy.is_agroed = false
