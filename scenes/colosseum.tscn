@@ -1,13 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://sobqn0lobnds"]
+[gd_scene load_steps=12 format=3 uid="uid://sobqn0lobnds"]
 
 [ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="1_cwdgk"]
+[ext_resource type="Script" path="res://scripts/hourglass.gd" id="2_rkdso"]
 [ext_resource type="Texture2D" uid="uid://dkphdmglepo6j" path="res://resources/hourglasses/hourglass normal.png" id="2_x7pds"]
+[ext_resource type="Texture2D" uid="uid://08nye25oj024" path="res://resources/hourglasses/hourglass_before_1.png" id="4_ln5or"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5jxp"]
-size = Vector2(219, 675)
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbrht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x7pds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ln5or")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kg3os"]
-radius = 204.039
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ffwv"]
+radius = 779.493
 
 [sub_resource type="GDScript" id="GDScript_tdrg0"]
 script/source = "extends Area2D
@@ -61,24 +74,20 @@ texture = ExtResource("1_cwdgk")
 polygon = PackedVector2Array(-919, -764, -1160, -536, -1213, 35, -1176, 487, -926, 766, -515, 951, -136, 1030, 508, 991, 1014, 720, 1231, 446, 1215, -168, 1165, -558, 887, -768, 455, -948, 246, -994, -305, -964, -581, -917, -400, -315, -31, -366, 296, -326, 581, -216, 755, -47, 804, 127, 469, 339, -1, 409, -252, 409, -487, 345, -798, 124, -786, -13, -686, -134, -407, -313, -589, -914)
 
 [node name="Hourglass" type="StaticBody2D" parent="."]
+script = ExtResource("2_rkdso")
 
-[node name="Sprite" type="Sprite2D" parent="Hourglass"]
-position = Vector2(-2, -219)
-scale = Vector2(3.2, 3.2)
-texture = ExtResource("2_x7pds")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hourglass"]
+polygon = PackedVector2Array(-269, -78, -206, -192, -21, -317, -164, -456, -272, -655, -245, -774, 3, -878, 225, -778, 261, -669, 156, -473, 8, -318, 196, -182, 260, -63, 259, 13, 228, 65, 155, 131, 68, 162, -4, 172, -91, 158, -164, 127, -240, 66, -266, 15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hourglass"]
-y_sort_enabled = true
-position = Vector2(-21.5, -218.5)
-shape = SubResource("RectangleShape2D_e5jxp")
+[node name="CrackFrames" type="AnimatedSprite2D" parent="Hourglass"]
+position = Vector2(0, -362)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_cbrht")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hourglass"]
-position = Vector2(-2, -1)
-shape = SubResource("CircleShape2D_kg3os")
+[node name="AttackArea" type="Area2D" parent="Hourglass"]
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hourglass"]
-position = Vector2(-2, -482)
-shape = SubResource("CircleShape2D_kg3os")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hourglass/AttackArea"]
+shape = SubResource("CircleShape2D_8ffwv")
 
 [node name="Doorways" type="Node" parent="."]
 
@@ -118,6 +127,8 @@ script = SubResource("GDScript_30wox")
 [node name="Collider" type="CollisionShape2D" parent="Doorways/DoorwayROutside"]
 shape = SubResource("CircleShape2D_3de0x")
 
+[connection signal="body_entered" from="Hourglass/AttackArea" to="Hourglass" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="Hourglass/AttackArea" to="Hourglass" method="_on_attack_area_body_exited"]
 [connection signal="body_entered" from="Doorways/DoorwayLInside" to="Doorways/DoorwayLInside" method="_on_body_entered"]
 [connection signal="body_entered" from="Doorways/DoorwayRInside" to="Doorways/DoorwayRInside" method="_on_body_entered"]
 [connection signal="body_entered" from="Doorways/DoorwayLOutside" to="Doorways/DoorwayLOutside" method="_on_body_entered"]

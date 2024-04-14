@@ -3,7 +3,7 @@ extends Node
 signal reset_signal
 
 @onready var timer
-@onready var player_node
+@onready var player_node: Player
 @onready var time_left
 
 # Called when the node enters the scene tree for the first time.

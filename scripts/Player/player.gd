@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-signal  player_attacking(num:int)
+signal player_attacking(num:int)
 
 var allow_attack_0:bool = true
 var allow_attack_1:bool = false
