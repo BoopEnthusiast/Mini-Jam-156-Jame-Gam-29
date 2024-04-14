@@ -1,16 +1,27 @@
-extends StaticBody2D
+extends Area2D
+
+@export var which_gem: int = 0 # 0: blue, 1: red, 2: yellow
+
+var gem_sprites: Array[Sprite2D] = [$GemBlue, $GemRed, $GemYellow]
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	assert(which_gem >= 0 or which_gem < len(gem_sprites), "Artefact is only meant to be 0, 1, or 2. It is not 0, 1, or 2, change this on the node since it's an @export variable. Also hi dummy :)")
+	print(gem_sprites)
+	for sprite in gem_sprites:
+		print(sprite)
+		sprite.visible = false
+	gem_sprites[which_gem].visible = true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_area_2d_body_entered(body):
+func _on_body_entered(body):
 	if body is Player:
-		$Sprite2D.set_frame(3)
+		match which_gem:
+			0:
+				body.allow_attack_1 = true
+			1:
+				body.allow_attack_2 = true
+			2:
+				body.allow_attack_3 = true
+		var sprite_texture = gem_sprites[which_gem].texture as AtlasTexture
+		sprite_texture.region.x = 48

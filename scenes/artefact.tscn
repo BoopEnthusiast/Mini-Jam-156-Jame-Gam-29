@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbcnnmq68sns5"]
+
+[ext_resource type="Script" path="res://scripts/artefact.gd" id="1_aihhx"]
+[ext_resource type="Texture2D" uid="uid://infwwf58x7we" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_blue.png" id="2_15i37"]
+[ext_resource type="Texture2D" uid="uid://478hiphiaef" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_red.png" id="3_uwriu"]
+[ext_resource type="Texture2D" uid="uid://thdifxumuqwm" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_yellow.png" id="4_pu1mb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4yg5"]
+atlas = ExtResource("2_15i37")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x0lo"]
+atlas = ExtResource("3_uwriu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs6g5"]
+atlas = ExtResource("4_pu1mb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i8uu1"]
+
+[node name="Artefact" type="Area2D"]
+scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_aihhx")
+
+[node name="GemBlue" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_c4yg5")
+
+[node name="GemRed" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_5x0lo")
+
+[node name="GemYellow" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_cs6g5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i8uu1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
