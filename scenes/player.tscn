@@ -323,14 +323,16 @@ autoplay = "IdleDown"
 [node name="particle affects" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D/particle affects"]
+[node name="trailParticles" type="CPUParticles2D" parent="AnimatedSprite2D/particle affects"]
 show_behind_parent = true
 z_as_relative = false
 position = Vector2(0, 4.25)
 scale = Vector2(0.25, 0.25)
 skew = -0.0436332
+emitting = false
 amount = 22
 lifetime = 1.62
+one_shot = true
 speed_scale = 2.94
 randomness = 1.0
 lifetime_randomness = 0.4
@@ -350,10 +352,8 @@ color_ramp = SubResource("Gradient_ij68b")
 
 [node name="WeaponParticles1" type="CPUParticles2D" parent="AnimatedSprite2D/particle affects"]
 position = Vector2(0, -0.5)
-emitting = false
-amount = 81
+amount = 100
 lifetime = 0.25
-one_shot = true
 explosiveness = 0.99
 fract_delta = false
 texture = ExtResource("5_0swrd")

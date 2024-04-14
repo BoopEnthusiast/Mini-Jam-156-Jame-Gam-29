@@ -68,16 +68,14 @@ var initialResetSize = 0
 
 var weaponHitbox: player_hitbox
 const weaponDamage = 30
-var weaponParticles1: CPUParticles2D
-
+@onready var trialParticles = $"AnimatedSprite2D/particle affects/trailParticles"
+@onready var weaponParticles1: CPUParticles2D = $"AnimatedSprite2D/particle affects/WeaponParticles1"
 func _ready():
 	Singleton.player_node = self
 	animatedSprite = $AnimatedSprite2D
-	particles = $CPUParticles2D
 	posOverTime.append(position)
 	healthOverTime.append(player_health)
 	weaponHitbox = get_child(3) #get weapon hitbox, idk $ would not work i hate this
-	weaponParticles1 = $"AnimatedSprite2D/particle affects/WeaponParticles1"
 
 
 func _physics_process(delta):
