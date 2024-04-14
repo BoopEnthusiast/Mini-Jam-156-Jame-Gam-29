@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwj41eh32srt0"]
+[gd_scene load_steps=5 format=3 uid="uid://bwj41eh32srt0"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_so68r"]
 [ext_resource type="Theme" uid="uid://dek8c25lr3hv4" path="res://resources/main_theme.tres" id="3_3he3q"]
 [ext_resource type="AudioStream" uid="uid://fc52xdg2d3oe" path="res://resources/audio/Music_test_1.wav" id="3_7alei"]
+[ext_resource type="Texture2D" uid="uid://e3mp3u8p8ncw" path="res://resources/Background.png" id="3_ltctf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,7 +15,7 @@ grow_vertical = 2
 theme = ExtResource("3_3he3q")
 script = ExtResource("1_so68r")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,8 +23,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_3he3q")
+texture = ExtResource("3_ltctf")
 
-[node name="TitleLabel" type="Label" parent="Panel"]
+[node name="TitleLabel" type="Label" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,17 +41,17 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Mycelium Melody"
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -99.0
-offset_top = -73.0
-offset_right = 99.0
-offset_bottom = -50.0
+offset_left = -240.5
+offset_top = -128.0
+offset_right = 240.5
+offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_3he3q")
