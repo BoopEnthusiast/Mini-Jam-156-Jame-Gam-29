@@ -1,4 +1,6 @@
 class_name Player extends CharacterBody2D
+
+var currentAttackType:int = 0
 var player_health = 100
 func hit_player(damage):
 	print("player hit")
@@ -6,11 +8,7 @@ func hit_player(damage):
 	var index = timedActionNumber.find(currentAction)
 	timedActionCooldown[index] = timedActionDefaultCooldown[index]
 	timedActionRemainingDuration = timedActionDuration[index]
-	
 	player_health -= damage
-
-var resetting:bool = false
-
 func reset(): #reset with animation
 	resetting = true
 	velocity = Vector2.ZERO
@@ -35,7 +33,7 @@ var healthOverTime:Array = []
 var posOverTime: Array = []
 
 var particles: CPUParticles2D
-
+var resetting:bool = false
 const accel = 40
 const friction = 0.9125
 const noInputFriction = 0.8
@@ -52,11 +50,11 @@ var currentAction: int = 0 # 0 for idle, 1 for run, further actions are timedAct
 var prevDir: Vector2 = Vector2.UP #used for determining idle directions
 
 #timed action system, used for attacks and possibly dashes/dodges in the future
-const timedActionNumber =         [2,3,4]   #refers to action number
-const timedActionDuration =       [0.125,0.125,0.25]#in secconds
-const timedActionDefaultCooldown =[1,2,0]
-const timedActionAnimationPosition =  [3,4,5] #represents the index * stride
-var timedActionCooldown =       [0,0,0]
+const timedActionNumber =         [2,3,4,5]   #refers to action number
+const timedActionDuration =       [0.125,0.125,0.25,0.125]#in secconds
+const timedActionDefaultCooldown =[1,2,0,1]
+const timedActionAnimationPosition =  [3,4,5,3] #represents the index * stride
+var timedActionCooldown =       [0,0,0,0]
 var timedActionRemainingDuration = 0
 
 const dashMaintain = 100
@@ -67,7 +65,7 @@ const ResetDurationDesired = 2.0 #the amount of time the reset should take
 var initialResetSize = 0
 
 var weaponHitbox: player_hitbox
-const weaponDamage = 3
+const weaponDamage = [2,3,4,5]
 @onready var trialParticles = $"AnimatedSprite2D/particle affects/trailParticles"
 @onready var weaponParticles1: CPUParticles2D = $"AnimatedSprite2D/particle affects/WeaponParticles1"
 @onready var audio1: AudioStreamPlayer2D = $sound1
@@ -81,8 +79,6 @@ func _ready():
 	posOverTime.append(position)
 	healthOverTime.append(player_health)
 	weaponHitbox = get_child(3) #get weapon hitbox, idk $ would not work i hate this
-
-
 func _physics_process(delta):
 	if resetting:
 		Engine.time_scale = resetTimeScale
@@ -130,11 +126,7 @@ func handleTimedActions(delta):
 	# map inputs to action
 	if currentFootstepCooldown >= 0:
 		currentFootstepCooldown -= delta
-	var debug = 0
-	if debug == 1:
-		print(timedActionRemainingDuration)
-		print(timedActionCooldown)
-		print(currentAction)
+	
 	
 	if currentAction >= 2 && timedActionRemainingDuration <= 0:
 		currentAction = 0 #finnish 
@@ -145,6 +137,9 @@ func handleTimedActions(delta):
 		
 	if Input.is_action_pressed("special"):
 		desiredAction = timedActionNumber[1]
+		
+	if Input.is_action_pressed("attack2"):
+		desiredAction = timedActionNumber[3]
 	
 	#decrease cooldowns
 	for i in range(timedActionCooldown.size()): #WHAT THE HELL IS THIS SHIT, THIS IS NOT THE FOR LOOP I KNOW AND LOVE
@@ -168,7 +163,8 @@ func handleTimedActions(delta):
 	match currentAction:
 		3:
 			velocity = wishDir*dashImpulse
-		2: 
+		5: 
+			weaponHitbox.length = 100
 			var desireRot: Vector2 = wishDir
 			if(desireRot == Vector2.ZERO):
 				desireRot = prevDir
@@ -176,6 +172,17 @@ func handleTimedActions(delta):
 			weaponParticles1.direction = desireRot
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
+			
+		2:
+			weaponHitbox.length = 50
+			var desireRot: Vector2 = wishDir
+			if(desireRot == Vector2.ZERO):
+				desireRot = prevDir
+			weaponParticles1.emitting = false
+			weaponParticles1.direction = desireRot
+			weaponHitbox.updateRot(desireRot)
+			weaponHitbox.resetSwing()
+			
 
 
 func handlePlayerAnimations():
@@ -204,7 +211,7 @@ func handlePlayerAnimations():
 			animatedSprite.animation = animationNames[animationsDir.find(bestFit)]
 			prevDir = bestFit
 		2:
-			weaponHitbox.tickHitbox(weaponDamage)
+			weaponHitbox.tickHitbox(weaponDamage[1])
 			
 			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 2)] 
 			animatedSprite.play( animationNames[animationsDir.find(prevDir) + (animationStride * 2)] )
@@ -214,6 +221,11 @@ func handlePlayerAnimations():
 				velocity += wishDir * dashMaintain
 		4:
 			animatedSprite.modulate = Color.RED # damage
+		5:
+			weaponHitbox.tickHitbox(weaponDamage[0])
+			
+			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 2)] 
+			animatedSprite.play( animationNames[animationsDir.find(prevDir) + (animationStride * 2)] )
 
 func handlePlayerMovement():
 	wishDir.x = Input.get_axis("move_left","move_right")
