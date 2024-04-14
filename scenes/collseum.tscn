@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://sobqn0lobnds"]
+
+[ext_resource type="Texture2D" uid="uid://crfix5h2jmqdw" path="res://resources/collseum/collseum_pixel_door.png" id="1_cwdgk"]
+
+[node name="Collseum" type="StaticBody2D"]
+
+[node name="Collseum" type="Sprite2D" parent="."]
+position = Vector2(60, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_cwdgk")
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
