@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ce5gsclhrc62b"]
+[gd_scene load_steps=68 format=3 uid="uid://ce5gsclhrc62b"]
 
 [ext_resource type="Script" path="res://scripts/enemy/basic_enemy.gd" id="1_6jdg1"]
 [ext_resource type="Texture2D" uid="uid://dpy27ghk7cysh" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/slug_leap.png" id="2_6nv1k"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dx57bocok2den" path="res://resources/audio/Enemy_slide-002.wav" id="9_75ad3"]
 [ext_resource type="AudioStream" uid="uid://d2xvrf4g5n6rt" path="res://resources/audio/Enemy_slide-003.wav" id="10_pdrh1"]
 [ext_resource type="AudioStream" uid="uid://dra2413ja7bnj" path="res://resources/audio/Enemy_slide-004.wav" id="11_vl3og"]
+[ext_resource type="Texture2D" uid="uid://dh7wl6i8jjgii" path="res://resources/Other/stun_star.png" id="12_xtsjm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rs0qx"]
 radius = 35.0
@@ -484,6 +485,10 @@ stream_2/weight = 1.0
 stream_3/stream = ExtResource("11_vl3og")
 stream_3/weight = 1.0
 
+[sub_resource type="Curve" id="Curve_084l1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503171, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 2
 gravity_scale = 0.0
@@ -580,6 +585,20 @@ stream = SubResource("AudioStreamRandomizer_a4xwh")
 volume_db = -5.0
 
 [node name="audio_timer" type="Timer" parent="."]
+
+[node name="stun_particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -17)
+emitting = false
+amount = 3
+lifetime = 0.75
+local_coords = true
+texture = ExtResource("12_xtsjm")
+emission_shape = 3
+emission_rect_extents = Vector2(25, 5)
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_084l1")
 
 [connection signal="timeout" from="AnimatedSprite2D/flash_timer" to="AnimatedSprite2D" method="_on_flash_timer_timeout"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

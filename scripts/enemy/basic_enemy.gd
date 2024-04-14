@@ -53,6 +53,7 @@ var can_play_audio = true
 @onready var attack_area = $attack_area
 @onready var death_effect = preload("res://scenes/enemy_death_effect.tscn")
 @onready var audio_player = $AudioStreamPlayer2D
+@onready var stun_particles: CPUParticles2D = $stun_particles
 
 func get_animation_name() -> String:
 	return STATE_ANIMATION_MAP[state] + "_" + ANIMATION_DIRECTION_MAP[animation_direction]
@@ -133,10 +134,12 @@ func _on_attack_timer_timeout() -> void:
 		State.LUNGING:
 			state = State.STUNNED
 			attack_timer.start(recharge_time)
+			stun_particles.emitting = true
 		State.STUNNED:
 			state = State.IDLE
 			is_attacking = false
 			_use_navigation = true
+			stun_particles.emitting = false
 
 func _on_stun_timer_timeout() -> void:
 	stun_timer.stop()
@@ -144,9 +147,11 @@ func _on_stun_timer_timeout() -> void:
 		State.KNOCKED_BACK:
 			state = State.STUNNED
 			stun_timer.start(current_stun_duration)
+			stun_particles.emitting = true
 		State.STUNNED:
 			state = State.IDLE
 			_use_navigation = true
+			stun_particles.emitting = false
 
 func _on_targetting_timer_timeout() -> void:
 	attack_direction = global_position.direction_to(player.global_position)
