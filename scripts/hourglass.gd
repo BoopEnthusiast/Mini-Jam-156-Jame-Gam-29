@@ -1,6 +1,8 @@
 extends StaticBody2D
 
 var is_getting_attacked := false
+var needed_order_of_attacks: Array[int] = []
+var current_attack_index: int = 0
 
 
 func _ready():

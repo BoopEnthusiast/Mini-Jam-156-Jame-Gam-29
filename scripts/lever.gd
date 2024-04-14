@@ -24,6 +24,7 @@ func toggle():
 	else:
 		on = true
 		$Sprite2D.set_frame(3)
+	%toggleSound.play
 
 
 func _on_area_2d_body_entered(body):

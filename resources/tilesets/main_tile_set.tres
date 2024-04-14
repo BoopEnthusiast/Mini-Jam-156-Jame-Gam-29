@@ -2557,13 +2557,6 @@ texture = ExtResource("1_qai5q")
 8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:6/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_q0w2j"]
-vertices = PackedVector2Array(8, 8, -3, 8, -3, -3, 8, -3)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-2.66667, -2.66667, 8, -2.66667, 8, 8, -2.66667, 8)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-agent_radius = 0.0
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_88mdd"]
 vertices = PackedVector2Array(8, 8, -3, 8, -3, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -2863,7 +2856,6 @@ texture = ExtResource("4_d5tbo")
 0:0/0/terrains_peering_bit/right_side = 1
 0:0/0/terrains_peering_bit/bottom_right_corner = 1
 0:0/0/terrains_peering_bit/bottom_side = 1
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_q0w2j")
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 1
@@ -5031,6 +5023,13 @@ texture = ExtResource("2_3tjea")
 10:6/0/terrains_peering_bit/top_right_corner = 1
 10:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_h2mqa")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whlml"]
+resource_name = "Non-navigatable"
+texture = ExtResource("2_3tjea")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
@@ -5045,3 +5044,4 @@ sources/1 = SubResource("TileSetAtlasSource_8c4p2")
 sources/3 = SubResource("TileSetAtlasSource_oytfi")
 sources/4 = SubResource("TileSetAtlasSource_8t617")
 sources/5 = SubResource("TileSetAtlasSource_gjl5d")
+sources/6 = SubResource("TileSetAtlasSource_whlml")
