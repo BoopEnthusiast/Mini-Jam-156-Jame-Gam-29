@@ -14,7 +14,7 @@ func _process(delta):
 	
 	if setup:
 		return
-		
+	setup = true
 	var player = Singleton.player_node
 	player.player_attacking.connect(player_has_attacked)
 
