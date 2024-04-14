@@ -31,8 +31,6 @@ func _nav_ready(_rid):
 
 func _process(_delta: float) -> void:
 	health_bar.scale = Vector2(clampf(health / max_health, 0, 1), 1)
-	if Input.is_action_just_pressed("attack1"):
-		take_damage(1)
 
 func _physics_process(delta: float):
 	if not is_agroed:
