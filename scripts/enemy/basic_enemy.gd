@@ -39,6 +39,8 @@ var damage_direction: Vector2
 var state = State.IDLE
 var animation_direction = AnimationDirection.RIGHT
 
+var can_play_audio = true
+
 @onready var current_stun_duration = stun_duration
 
 @onready var player = Singleton.player_node
@@ -47,8 +49,10 @@ var animation_direction = AnimationDirection.RIGHT
 @onready var targetting_timer: Timer = $targetting_timer
 @onready var stun_timer: Timer = $stun_timer
 @onready var flash_timer: Timer = $AnimatedSprite2D/flash_timer
+@onready var audio_timer: Timer = $audio_timer
 @onready var attack_area = $attack_area
 @onready var death_effect = preload("res://scenes/enemy_death_effect.tscn")
+@onready var audio_player = $AudioStreamPlayer2D
 
 func get_animation_name() -> String:
 	return STATE_ANIMATION_MAP[state] + "_" + ANIMATION_DIRECTION_MAP[animation_direction]
@@ -56,6 +60,10 @@ func get_animation_name() -> String:
 func _process(delta: float) -> void:
 	super._process(delta)
 	_handle_animation()
+	if linear_velocity.length() > 1 && can_play_audio:
+		audio_player.play()
+		can_play_audio = false
+		audio_timer.start(1.0)
 
 func _handle_animation():
 	var normalised_velocity = linear_velocity.normalized()
@@ -103,12 +111,17 @@ func _do_attack(_delta: float):
 			state = State.CHARGING
 			charge_position = global_position
 			attack_timer.start(charge_time)
-			flash_timer.start(charge_time * 2.0/4.0)
-			targetting_timer.start(charge_time * 2.0/4.0)
+			flash_timer.start(charge_time * 2.5/4.0)
+			targetting_timer.start(charge_time * 2.5/4.0)
 		State.LUNGING:
 				pass
 		_:
 			linear_velocity = Vector2.ZERO
+
+func _on_audio_timer_timeout():
+	audio_timer.stop()
+	audio_player.stop()
+	can_play_audio = true
 
 func _on_attack_timer_timeout() -> void:
 	attack_timer.stop()
