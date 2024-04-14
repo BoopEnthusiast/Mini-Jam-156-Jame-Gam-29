@@ -199,7 +199,8 @@ func handleTimedActions(delta):
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0
-			
+			var x = $attk2
+			x.play()
 		2:
 			weaponHitbox.rad = 60
 			weaponHitbox.length = 50
@@ -222,6 +223,8 @@ func handleTimedActions(delta):
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0
+			var x = $attk3
+			x.play()
 		7:
 			weaponHitbox.rad = 60
 			weaponHitbox.length = 100
@@ -234,6 +237,8 @@ func handleTimedActions(delta):
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0.7
+			var x = $attk4
+			x.play()
 
 
 func handlePlayerAnimations():
