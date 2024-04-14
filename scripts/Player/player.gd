@@ -86,12 +86,17 @@ const footstepCooldown = 0.4
 const postResetFrames = 60
 var currentPostResetFrames = 0
 
-func _ready():
+
+func _enter_tree():
 	Singleton.player_node = self
+
+
+func _ready():
 	animatedSprite = $AnimatedSprite2D
 	posOverTime.append(position)
 	healthOverTime.append(player_health)
 	weaponHitbox = get_child(3) #get weapon hitbox, idk $ would not work i hate this
+
 func _physics_process(delta):
 	if resetting:
 		Engine.time_scale = resetTimeScale
@@ -113,6 +118,7 @@ func _physics_process(delta):
 	posOverTime.append(position)
 	healthOverTime.append(player_health)
 	
+
 func handleResetting():
 	if posOverTime.size() < 1 && currentPostResetFrames == 0:
 		resetting = false

@@ -8,7 +8,6 @@ signal reset_signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player_node = $Player
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
