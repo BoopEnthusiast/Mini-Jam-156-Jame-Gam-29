@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://d26nxoa5ym6p8"]
+[gd_scene load_steps=58 format=3 uid="uid://d26nxoa5ym6p8"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_8721r"]
 [ext_resource type="Texture2D" uid="uid://dwh00xnapdk6" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Mushroom_man_character_sheet.png" id="2_lxd3l"]
@@ -8,9 +8,11 @@
 [ext_resource type="Script" path="res://scripts/Player/Hitbox.gd" id="5_agxan"]
 [ext_resource type="Texture2D" uid="uid://j84ti8t0h8fm" path="res://resources/Other/Arrow_BIG.png" id="6_3f40i"]
 [ext_resource type="AudioStream" uid="uid://dv7ekj3fh4tqh" path="res://resources/audio/Footstep-001.wav" id="7_iv7ii"]
+[ext_resource type="Texture2D" uid="uid://cdtv4dtg3ghtw" path="res://resources/Other/just_a_happy_black_pixel.png" id="7_kbr02"]
 [ext_resource type="AudioStream" uid="uid://npa7wp6wwopr" path="res://resources/audio/Footstep-002.wav" id="7_msxkq"]
 [ext_resource type="AudioStream" uid="uid://blm6aujrdkbv0" path="res://resources/audio/Footstep-003.wav" id="8_yywdc"]
 [ext_resource type="AudioStream" uid="uid://c47ran545ybfp" path="res://resources/audio/Footstep-004.wav" id="9_6ydlu"]
+[ext_resource type="AudioStream" uid="uid://buje2x72v7lk5" path="res://resources/audio/tapeRewindSound.mp3" id="13_wd12t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otm6s"]
 radius = 19.0
@@ -344,6 +346,18 @@ fill_to = Vector2(0.973479, 0.435584)
 offsets = PackedFloat32Array(0.755396, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Gradient" id="Gradient_q04i6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.557769)
+colors = PackedColorArray(0, 0, 0, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v4fbt"]
+gradient = SubResource("Gradient_q04i6")
+width = 96
+height = 48
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61p66"]
 radius = 60.0
 height = 120.0
@@ -372,9 +386,8 @@ shape = SubResource("CapsuleShape2D_otm6s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1ptev")
-animation = &"SPINNYIDGAF"
-autoplay = "IdleDown"
-frame_progress = 0.2074
+animation = &"IdleUp"
+autoplay = "IdleUp"
 
 [node name="particle affects" type="Node2D" parent="AnimatedSprite2D"]
 show_behind_parent = true
@@ -423,6 +436,13 @@ scale_amount_min = 0.0
 scale_amount_max = 0.3
 color_ramp = SubResource("Gradient_y737t")
 
+[node name="shadow" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0.592157)
+show_behind_parent = true
+position = Vector2(-0.25, 7.5)
+scale = Vector2(0.279622, 0.251953)
+texture = SubResource("GradientTexture2D_v4fbt")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 
@@ -435,9 +455,12 @@ visible = false
 position = Vector2(570, 287)
 texture = ExtResource("6_3f40i")
 
-[node name="Fullscreen effects" type="CanvasLayer" parent="Camera2D"]
-layer = 2
-follow_viewport_enabled = true
+[node name="happy black pixel" type="Sprite2D" parent="Camera2D/CanvasLayer/UI/ArrowBig"]
+modulate = Color(1, 1, 1, 0.447059)
+show_behind_parent = true
+position = Vector2(570, 287)
+scale = Vector2(5000, 5000)
+texture = ExtResource("7_kbr02")
 
 [node name="Hitbox1" type="ShapeCast2D" parent="."]
 position = Vector2(0, 1)
@@ -450,3 +473,7 @@ script = ExtResource("5_agxan")
 
 [node name="sound1" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_yof2t")
+
+[node name="resetSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_wd12t")
+volume_db = -13.472

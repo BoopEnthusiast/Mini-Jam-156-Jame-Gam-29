@@ -15,10 +15,14 @@ func hit_player(damage):
 	timedActionRemainingDuration = timedActionDuration[index]
 	player_health -= damage
 func reset(): #reset with animation
+	currentPostResetFrames = postResetFrames
 	resetting = true
 	velocity = Vector2.ZERO
 	animatedSprite.modulate = Color(1,1,1,0.5)
 	initialResetSize = posOverTime.size()
+	var x = $resetSound
+	x.play()
+	
 func quick_reset(): #no animation
 	var h = healthOverTime.pop_front()
 	var p = posOverTime.pop_front()
@@ -74,9 +78,11 @@ const weaponDamage = [2,3,4,5]
 @onready var trialParticles = $"AnimatedSprite2D/particle affects/trailParticles"
 @onready var weaponParticles1: CPUParticles2D = $"AnimatedSprite2D/particle affects/WeaponParticles1"
 @onready var audio1: AudioStreamPlayer2D = $sound1
-
+@onready var theVeryImportantHappyBlackPixelAndHisVerySeriousParent_TheBigArrow_UsedForFullScreenAffectsWhenDie = $Camera2D/CanvasLayer/UI/ArrowBig
 var currentFootstepCooldown = 0
 const footstepCooldown = 0.4
+const postResetFrames = 60
+var currentPostResetFrames = 0
 
 func _ready():
 	Singleton.player_node = self
@@ -106,16 +112,23 @@ func _physics_process(delta):
 	healthOverTime.append(player_health)
 	
 func handleResetting():
-	if posOverTime.size() < 1:
+	if posOverTime.size() < 1 && currentPostResetFrames == 0:
 		resetting = false
 		animatedSprite.modulate = Color(1,1,1,1)
 		Singleton.reset()
+		theVeryImportantHappyBlackPixelAndHisVerySeriousParent_TheBigArrow_UsedForFullScreenAffectsWhenDie.visible = false
 		return
+	theVeryImportantHappyBlackPixelAndHisVerySeriousParent_TheBigArrow_UsedForFullScreenAffectsWhenDie.visible = true
+	
+	if(posOverTime.size() < 1):
+		animatedSprite.animation = animationNames[3]
+		currentPostResetFrames-=1
+		return
+	
 	
 	var pos
 	var hlth
 	var numFramesToSkip = ((initialResetSize /60)/ResetDurationDesired)
-	
 	while numFramesToSkip > 0 && posOverTime.size() > 2: #skip frames 
 		pos = posOverTime.pop_back()
 		hlth = healthOverTime.pop_back()
