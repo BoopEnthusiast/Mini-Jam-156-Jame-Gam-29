@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="3_ygrr7"]
 [ext_resource type="AudioStream" uid="uid://d0mb3s6sorw1m" path="res://resources/audio/Artifact_2.wav" id="6_8u420"]
 [ext_resource type="PackedScene" uid="uid://sobqn0lobnds" path="res://scenes/colosseum.tscn" id="6_vnv5y"]
-[ext_resource type="PackedScene" uid="uid://cbcnnmq68sns5" path="res://scenes/artefact.tscn" id="8_ncof4"]
+[ext_resource type="PackedScene" path="res://scenes/artefact.tscn" id="8_ncof4"]
 [ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="9_44ygi"]
 [ext_resource type="PackedScene" uid="uid://dpqmrxhikxcag" path="res://scenes/misc_fullscreen_effects.tscn" id="10_tak70"]
 
