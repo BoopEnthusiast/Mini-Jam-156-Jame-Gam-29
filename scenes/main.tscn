@@ -57,6 +57,7 @@ position = Vector2(-11925, 2268)
 
 [node name="NPC" parent="." instance=ExtResource("9_44ygi")]
 position = Vector2(-4969, 31)
+dialogue = "How does the poem go again? You must go up before left, down, right! Baby swing it down again and to the left, hoo-rah!"
 
 [node name="MiscFullscreenEffects" parent="." instance=ExtResource("10_tak70")]
 z_index = 1
