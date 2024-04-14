@@ -11,6 +11,9 @@ extends RigidBody2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var start_position = global_position
 @onready var max_health = health
+@onready var slow_timer: Timer = $slow_timer
+
+var speed_multiplier: float = 1
 
 var is_agroed = false
 var is_attacking = false
@@ -60,7 +63,7 @@ func move_to_target(_delta: float):
 		return
 		
 	var target = navigation_agent.get_next_path_position()
-	var new_velocity = global_position.direction_to(target) * speed
+	var new_velocity = global_position.direction_to(target) * speed * speed_multiplier
 	
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.velocity = new_velocity
@@ -88,8 +91,8 @@ func _do_attack(_delta: float) -> void:
 func take_damage(damage: float):
 	pass
 
-func apply_slow(factor: float, duration: float):
-	pass
+func apply_slow(factor: float):
+	speed *= factor
 
 func _on_death():
 	pass
