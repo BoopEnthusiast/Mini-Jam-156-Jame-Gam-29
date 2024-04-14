@@ -8,7 +8,6 @@ extends Area2D
 func _ready():
 	assert(which_gem >= 0 or which_gem < len(gem_sprites), "Artefact is only meant to be 0, 1, or 2. It is not 0, 1, or 2, change this on the node since it's an @export variable. Also hi dummy :)")
 	for sprite in gem_sprites:
-		print(sprite)
 		sprite.visible = false
 	gem_sprites[which_gem].visible = true
 

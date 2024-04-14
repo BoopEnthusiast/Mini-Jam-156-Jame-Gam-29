@@ -14,6 +14,7 @@ func _ready():
 
 
 func _on_attack_area_body_entered(body):
+	print(body)
 	if body is Player:
 		is_getting_attacked = true
 
@@ -24,6 +25,7 @@ func _on_attack_area_body_exited(body):
 
 
 func player_has_attacked(which_attack: int) -> void:
+	print(is_getting_attacked)
 	if not is_getting_attacked:
 		return
 	
@@ -41,7 +43,7 @@ func player_has_attacked(which_attack: int) -> void:
 func update_gem_sprites() -> void:
 	for gem in gems:
 		gem.visible = false
-	gems[needed_order_of_attacks[current_attack_index]].visible = true
+	gems[needed_order_of_attacks[current_attack_index] - 1].visible = true
 
 
 func update_cracks() -> void:

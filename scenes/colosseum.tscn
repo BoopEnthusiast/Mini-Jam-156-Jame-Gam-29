@@ -112,25 +112,24 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_cbrht")
 
 [node name="AttackArea" type="Area2D" parent="Hourglass"]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hourglass/AttackArea"]
 shape = SubResource("CircleShape2D_8ffwv")
 
 [node name="BlueGem" type="Sprite2D" parent="Hourglass"]
-visible = false
-position = Vector2(0, -702)
+position = Vector2(0, -121)
 scale = Vector2(16, 16)
 texture = SubResource("AtlasTexture_5gk0p")
 
 [node name="RedGem" type="Sprite2D" parent="Hourglass"]
-visible = false
-position = Vector2(0, -702)
+position = Vector2(0, -121)
 scale = Vector2(16, 16)
 texture = SubResource("AtlasTexture_nod75")
 
 [node name="YellowGem" type="Sprite2D" parent="Hourglass"]
-visible = false
-position = Vector2(0, -702)
+position = Vector2(0, -121)
 scale = Vector2(16, 16)
 texture = SubResource("AtlasTexture_fyrap")
 

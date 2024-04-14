@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://hik6w44brocv" path="res://scenes/map.tscn" id="2_glwhr"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_region.gd" id="3_046bj"]
 [ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="3_ygrr7"]
-[ext_resource type="AudioStream" uid="uid://d0mb3s6sorw1m" path="res://resources/audio/Artifact_2.wav" id="6_8u420"]
+[ext_resource type="AudioStream" uid="uid://fc52xdg2d3oe" path="res://resources/audio/Music_test_1.wav" id="6_mu4tf"]
 [ext_resource type="PackedScene" uid="uid://sobqn0lobnds" path="res://scenes/colosseum.tscn" id="6_vnv5y"]
 [ext_resource type="PackedScene" uid="uid://d32f7wea28wmo" path="res://scenes/artefact.tscn" id="8_ncof4"]
 [ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="9_44ygi"]
@@ -47,7 +47,7 @@ position = Vector2(392, 492)
 position = Vector2(-198, 547)
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_8u420")
+stream = ExtResource("6_mu4tf")
 autoplay = true
 bus = &"BGM"
 
