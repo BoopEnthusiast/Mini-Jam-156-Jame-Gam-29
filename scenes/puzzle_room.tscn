@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/puzzle_room.gd" id="2_dbnji"]
 [ext_resource type="PackedScene" uid="uid://dq2duwyopbk0" path="res://scenes/lever.tscn" id="2_s0y4g"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="3_1c0rr"]
-[ext_resource type="PackedScene" uid="uid://xtoxogtkfs5f" path="res://scenes/artefact.tscn" id="5_58kvm"]
+[ext_resource type="PackedScene" uid="uid://cbcnnmq68sns5" path="res://scenes/artefact.tscn" id="5_58kvm"]
 
 [node name="PuzzleRoom" type="TileMap"]
 scale = Vector2(4, 4)

@@ -1,13 +1,74 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv4myo2y4rjnx"]
+[gd_scene load_steps=13 format=3 uid="uid://dv4myo2y4rjnx"]
 
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_tca1e"]
 [ext_resource type="Script" path="res://scripts/text_panel.gd" id="2_m3wtd"]
+[ext_resource type="Texture2D" uid="uid://b5hujgxj7u0yh" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/NPCs.png" id="3_v3gck"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cbgq"]
-radius = 215.002
+radius = 159.013
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao04y"]
-size = Vector2(88, 164)
+size = Vector2(64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40yva"]
+atlas = ExtResource("3_v3gck")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am0vo"]
+atlas = ExtResource("3_v3gck")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvo7y"]
+atlas = ExtResource("3_v3gck")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpfg4"]
+atlas = ExtResource("3_v3gck")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaxne"]
+atlas = ExtResource("3_v3gck")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wy01"]
+atlas = ExtResource("3_v3gck")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2eiwe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40yva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am0vo")
+}],
+"loop": true,
+"name": &"0",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvo7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpfg4")
+}],
+"loop": true,
+"name": &"1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaxne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wy01")
+}],
+"loop": true,
+"name": &"2",
+"speed": 2.0
+}]
 
 [node name="NPC" type="StaticBody2D"]
 script = ExtResource("1_tca1e")
@@ -18,18 +79,20 @@ script = ExtResource("1_tca1e")
 shape = SubResource("CircleShape2D_5cbgq")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_ao04y")
 
 [node name="TextBackground" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -155.5
-offset_top = -385.0
+offset_top = -184.0
 offset_right = 155.5
-offset_bottom = -269.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_m3wtd")
@@ -46,7 +109,10 @@ text = "Text here..."
 [node name="Timer" type="Timer" parent="TextBackground"]
 wait_time = 0.05
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_2eiwe")
+animation = &"0"
 
 [connection signal="body_entered" from="TalkArea" to="." method="_on_talk_area_body_entered"]
 [connection signal="body_exited" from="TalkArea" to="." method="_on_talk_area_body_exited"]
