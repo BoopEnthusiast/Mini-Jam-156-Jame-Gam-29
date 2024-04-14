@@ -165,9 +165,12 @@ func handleTimedActions(delta):
 		3:
 			velocity = wishDir*dashImpulse
 		2: 
+			var desireRot: Vector2 = wishDir
+			if(desireRot == Vector2.ZERO):
+				desireRot = prevDir
 			weaponParticles1.emitting = true
-			weaponParticles1.direction = wishDir
-			weaponHitbox.updateRot(wishDir)
+			weaponParticles1.direction = desireRot
+			weaponHitbox.updateRot(desireRot)
 
 
 func handlePlayerAnimations():
@@ -190,7 +193,6 @@ func handlePlayerAnimations():
 			animatedSprite.animation = animationNames[animationsDir.find(bestFit)]
 			prevDir = bestFit
 		2:
-			weaponHitbox.updateRot(prevDir)
 			weaponHitbox.tickHitbox(weaponDamage)
 			
 			animatedSprite.animation = animationNames[animationsDir.find(prevDir) + (animationStride * 2)] 
