@@ -7,9 +7,8 @@ script/source = "extends Area2D
 
 
 func _on_body_entered(body):
-	print(body)
 	if body is Player:
-		body.global_position.x -= 800
+		body.global_position.x -= 700
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3de0x"]
@@ -21,7 +20,7 @@ script/source = "extends Area2D
 
 func _on_body_entered(body):
 	if body is Player:
-		body.global_position.x += 800
+		body.global_position.x += 700
 "
 
 [sub_resource type="GDScript" id="GDScript_0sb2y"]
@@ -30,7 +29,7 @@ script/source = "extends Area2D
 
 func _on_body_entered(body):
 	if body is Player:
-		body.global_position.x += 800
+		body.global_position.x += 700
 "
 
 [sub_resource type="GDScript" id="GDScript_30wox"]
@@ -40,7 +39,7 @@ script/source = "extends Area2D
 
 func _on_body_entered(body):
 	if body is Player:
-		body.global_position.x -= 800
+		body.global_position.x -= 700
 "
 
 [node name="Colosseum" type="StaticBody2D"]
@@ -56,6 +55,8 @@ polygon = PackedVector2Array(-919, -764, -1160, -536, -1213, 35, -1176, 487, -92
 
 [node name="DoorwayLInside" type="Area2D" parent="."]
 position = Vector2(-737, -104)
+collision_layer = 0
+collision_mask = 4
 script = SubResource("GDScript_tdrg0")
 
 [node name="Collider" type="CollisionShape2D" parent="DoorwayLInside"]
@@ -63,6 +64,8 @@ shape = SubResource("CircleShape2D_3de0x")
 
 [node name="DoorwayRInside" type="Area2D" parent="."]
 position = Vector2(733, -104)
+collision_layer = 0
+collision_mask = 4
 script = SubResource("GDScript_rt4wl")
 
 [node name="Collider" type="CollisionShape2D" parent="DoorwayRInside"]
@@ -70,6 +73,8 @@ shape = SubResource("CircleShape2D_3de0x")
 
 [node name="DoorwayLOutside" type="Area2D" parent="."]
 position = Vector2(-1202, -104)
+collision_layer = 0
+collision_mask = 4
 script = SubResource("GDScript_0sb2y")
 
 [node name="Collider" type="CollisionShape2D" parent="DoorwayLOutside"]
@@ -77,6 +82,8 @@ shape = SubResource("CircleShape2D_3de0x")
 
 [node name="DoorwayROutside" type="Area2D" parent="."]
 position = Vector2(1222, -104)
+collision_layer = 0
+collision_mask = 4
 script = SubResource("GDScript_30wox")
 
 [node name="Collider" type="CollisionShape2D" parent="DoorwayROutside"]
