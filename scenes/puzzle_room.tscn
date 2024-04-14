@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr5y35crbwxyw"]
+[gd_scene load_steps=9 format=3 uid="uid://dr5y35crbwxyw"]
 
 [ext_resource type="TileSet" uid="uid://bvx4tpn7c2mxi" path="res://resources/tilesets/main_tile_set.tres" id="1_o0tw2"]
 [ext_resource type="Script" path="res://scripts/puzzle_room.gd" id="2_dbnji"]
 [ext_resource type="PackedScene" uid="uid://dq2duwyopbk0" path="res://scenes/lever.tscn" id="2_s0y4g"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="3_1c0rr"]
+[ext_resource type="Script" path="res://scripts/artefact.gd" id="5_lolgj"]
+[ext_resource type="Texture2D" uid="uid://infwwf58x7we" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_blue.png" id="6_8hxua"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qa6a"]
+radius = 5.75
+height = 12.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kghqg"]
+radius = 9.0
+height = 18.0
 
 [node name="PuzzleRoom" type="TileMap"]
 scale = Vector2(4, 4)
@@ -27,3 +37,28 @@ position = Vector2(200, 40.25)
 [node name="Player" parent="." instance=ExtResource("3_1c0rr")]
 position = Vector2(144.75, 81.75)
 scale = Vector2(0.25, 0.25)
+
+[node name="Artefact" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(50, 30)
+script = ExtResource("5_lolgj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Artefact"]
+texture = ExtResource("6_8hxua")
+hframes = 4
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Artefact"]
+position = Vector2(0, 1.75)
+shape = SubResource("CapsuleShape2D_3qa6a")
+
+[node name="Area2D" type="Area2D" parent="Artefact"]
+position = Vector2(0, 1)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Artefact/Area2D"]
+position = Vector2(0, 0.75)
+shape = SubResource("CapsuleShape2D_kghqg")
+
+[connection signal="body_entered" from="Artefact/Area2D" to="Artefact" method="_on_area_2d_body_entered"]
