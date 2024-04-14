@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody2D
 
+signal  player_attacking(num:int)
 
 var allow_attack_0:bool = true
 var allow_attack_1:bool = true
@@ -202,6 +203,7 @@ func handleTimedActions(delta):
 			weaponHitbox.slowFactor = 0
 			var x = $attk2
 			x.play()
+			player_attacking.emit(1)
 		2:
 			weaponHitbox.rad = 60
 			weaponHitbox.length = 50
@@ -214,6 +216,7 @@ func handleTimedActions(delta):
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0
 			var x = $attk1
+			player_attacking.emit(0)
 			x.play()
 		6:
 			weaponHitbox.rad = 90
@@ -227,6 +230,7 @@ func handleTimedActions(delta):
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0
 			var x = $attk3
+			player_attacking.emit(2)
 			x.play()
 		7:
 			weaponHitbox.rad = 60
@@ -242,6 +246,7 @@ func handleTimedActions(delta):
 			weaponHitbox.slowFactor = 0.7
 			var x = $attk4
 			x.play()
+			player_attacking.emit(3)
 
 
 func handlePlayerAnimations():
