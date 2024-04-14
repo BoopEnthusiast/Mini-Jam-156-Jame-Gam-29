@@ -19,6 +19,7 @@ texture_filter = 1
 script = ExtResource("1_73tdu")
 
 [node name="Player" parent="." instance=ExtResource("1_w3ncm")]
+z_index = 1
 position = Vector2(61, -95)
 
 [node name="Map" parent="." instance=ExtResource("2_glwhr")]
@@ -55,5 +56,6 @@ position = Vector2(-11925, 2268)
 
 [node name="NPC" parent="." instance=ExtResource("9_44ygi")]
 position = Vector2(-4969, 31)
+dialogue = "How does the poem go again? You must go up before left, down, right! Baby swing it down again and to the left, hoo-rah!"
 
 [connection signal="finished" from="BGMPlayer" to="." method="_on_bgm_player_finished"]

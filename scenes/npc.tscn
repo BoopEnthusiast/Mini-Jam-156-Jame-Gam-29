@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv4myo2y4rjnx"]
+[gd_scene load_steps=17 format=3 uid="uid://dv4myo2y4rjnx"]
 
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_tca1e"]
 [ext_resource type="Script" path="res://scripts/text_panel.gd" id="2_m3wtd"]
+[ext_resource type="Texture2D" uid="uid://118yu4hht5jf" path="res://resources/tilesets/Signs.png" id="2_qwmh2"]
 [ext_resource type="Theme" uid="uid://dek8c25lr3hv4" path="res://resources/main_theme.tres" id="3_3x5ia"]
 [ext_resource type="Texture2D" uid="uid://b5hujgxj7u0yh" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/NPCs.png" id="3_v3gck"]
 
@@ -11,7 +12,12 @@ radius = 159.013
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao04y"]
 size = Vector2(64, 72)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5siug"]
+atlas = ExtResource("2_qwmh2")
+region = Rect2(4, 2, 37, 12)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_et30y"]
+texture = SubResource("AtlasTexture_5siug")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_40yva"]
 atlas = ExtResource("3_v3gck")
@@ -108,9 +114,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_3x5ia")
+theme_override_font_sizes/normal_font_size = 9
 
 [node name="Timer" type="Timer" parent="TextBackground"]
 wait_time = 0.05
