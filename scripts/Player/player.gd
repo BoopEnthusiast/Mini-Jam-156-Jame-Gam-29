@@ -70,6 +70,7 @@ var weaponHitbox: player_hitbox
 const weaponDamage = 3
 @onready var trialParticles = $"AnimatedSprite2D/particle affects/trailParticles"
 @onready var weaponParticles1: CPUParticles2D = $"AnimatedSprite2D/particle affects/WeaponParticles1"
+@onready var audio0: AudioStreamPlayer2D = $sound0
 func _ready():
 	Singleton.player_node = self
 	animatedSprite = $AnimatedSprite2D
@@ -158,7 +159,6 @@ func handleTimedActions(delta):
 		timedActionRemainingDuration = timedActionDuration[index]
 	else :
 		return
-		
 	match currentAction:
 		3:
 			velocity = wishDir*dashImpulse

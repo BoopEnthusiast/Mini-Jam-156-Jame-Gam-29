@@ -393,3 +393,5 @@ max_results = 64
 collision_mask = 255
 collide_with_areas = true
 script = ExtResource("5_agxan")
+
+[node name="sound0" type="AudioStreamPlayer2D" parent="."]
