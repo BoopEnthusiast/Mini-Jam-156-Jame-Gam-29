@@ -1,5 +1,5 @@
 class_name player_hitbox extends ShapeCast2D
-const length = 100;
+var length = 100;
 
 var recentlyHit = []
 
