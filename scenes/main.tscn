@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btcncnm8lyjnm"]
+[gd_scene load_steps=11 format=3 uid="uid://btcncnm8lyjnm"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_73tdu"]
 [ext_resource type="PackedScene" uid="uid://d26nxoa5ym6p8" path="res://scenes/player.tscn" id="1_w3ncm"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ce5gsclhrc62b" path="res://scenes/enemy.tscn" id="3_ygrr7"]
 [ext_resource type="AudioStream" uid="uid://d0mb3s6sorw1m" path="res://resources/audio/Artifact_2.wav" id="6_8u420"]
 [ext_resource type="PackedScene" uid="uid://sobqn0lobnds" path="res://scenes/colosseum.tscn" id="6_vnv5y"]
+[ext_resource type="PackedScene" path="res://scenes/artefact.tscn" id="8_ncof4"]
+[ext_resource type="PackedScene" uid="uid://dv4myo2y4rjnx" path="res://scenes/npc.tscn" id="9_44ygi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66kvv"]
 radius = 1000.0
@@ -47,5 +49,11 @@ autoplay = true
 bus = &"BGM"
 
 [node name="Colosseum" parent="." instance=ExtResource("6_vnv5y")]
+
+[node name="Artefact" parent="." instance=ExtResource("8_ncof4")]
+position = Vector2(-11925, 2268)
+
+[node name="NPC" parent="." instance=ExtResource("9_44ygi")]
+position = Vector2(-4969, 31)
 
 [connection signal="finished" from="BGMPlayer" to="." method="_on_bgm_player_finished"]
