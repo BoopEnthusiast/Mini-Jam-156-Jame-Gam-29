@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dq2duwyopbk0"]
 
 [ext_resource type="Script" path="res://scripts/lever.gd" id="1_7fg6v"]
-[ext_resource type="Texture2D" uid="uid://ovxtrmkc6604" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Levers_on_and_off.png" id="2_sxe88"]
+[ext_resource type="Texture2D" uid="uid://dbj66nptjmps2" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Levers_on_and_off.png" id="2_sxe88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0s3g"]
 size = Vector2(12, 10)
