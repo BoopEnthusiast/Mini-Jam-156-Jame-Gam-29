@@ -19,6 +19,7 @@ position = Vector2(61, -95)
 [node name="Map" parent="." instance=ExtResource("2_glwhr")]
 
 [node name="enemy_region_1" type="Area2D" parent="."]
+position = Vector2(4167, 0)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_046bj")
