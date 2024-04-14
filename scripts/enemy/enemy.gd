@@ -37,7 +37,8 @@ func _physics_process(delta: float):
 		if is_attacking:
 			_cancel_attack()
 		
-		navigation_agent.target_position = start_position
+		if navigation_agent.target_position != start_position:
+			navigation_agent.target_position = start_position
 	else:
 		_set_movement_target()
 	
@@ -53,9 +54,7 @@ func _physics_process(delta: float):
 		_do_attack(delta)
 
 # Handles the movement of an enemy
-func move_to_target(_delta: float):
-	navigation_agent.velocity = linear_velocity
-	
+func move_to_target(_delta: float):	
 	if navigation_agent.is_navigation_finished() || !_use_navigation:
 		return
 		
