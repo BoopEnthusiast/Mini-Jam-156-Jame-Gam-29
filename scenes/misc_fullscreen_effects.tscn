@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpqmrxhikxcag"]
+[gd_scene load_steps=4 format=3 uid="uid://dpqmrxhikxcag"]
 
-[sub_resource type="Gradient" id="Gradient_3y3wg"]
-offsets = PackedFloat32Array(0, 0.602, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.454902, 0.454902, 0.454902, 0, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_wsbdj"]
+offsets = PackedFloat32Array(0, 0.502, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.501961, 0.501961, 0.501961, 0.168627, 0.501961, 0.501961, 0.501961, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dk0es"]
-gradient = SubResource("Gradient_3y3wg")
-width = 1152
-height = 1152
-repeat = 2
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2q7y6"]
+noise_type = 3
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ixua2"]
+width = 2160
+height = 2160
+seamless = true
+color_ramp = SubResource("Gradient_wsbdj")
+noise = SubResource("FastNoiseLite_2q7y6")
 
 [node name="MiscFullscreenEffects" type="Node2D"]
 visible = false
@@ -20,7 +25,6 @@ layer = 100
 follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1152, 1152)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = SubResource("GradientTexture2D_dk0es")
+texture = SubResource("NoiseTexture2D_ixua2")
