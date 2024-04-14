@@ -50,6 +50,6 @@ bus = &"BGM"
 [node name="Colosseum" parent="." instance=ExtResource("6_vnv5y")]
 
 [node name="Artefact" parent="." instance=ExtResource("8_lyq5c")]
-position = Vector2(-11870, 2247)
+position = Vector2(-365, 137)
 
 [connection signal="finished" from="BGMPlayer" to="." method="_on_bgm_player_finished"]

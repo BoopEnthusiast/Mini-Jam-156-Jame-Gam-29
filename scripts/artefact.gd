@@ -2,12 +2,11 @@ extends Area2D
 
 @export var which_gem: int = 0 # 0: blue, 1: red, 2: yellow
 
-var gem_sprites: Array[Sprite2D] = [$GemBlue, $GemRed, $GemYellow]
+@onready var gem_sprites: Array[Sprite2D] = [$GemBlue, $GemRed, $GemYellow]
 
 
 func _ready():
 	assert(which_gem >= 0 or which_gem < len(gem_sprites), "Artefact is only meant to be 0, 1, or 2. It is not 0, 1, or 2, change this on the node since it's an @export variable. Also hi dummy :)")
-	print(gem_sprites)
 	for sprite in gem_sprites:
 		print(sprite)
 		sprite.visible = false
@@ -24,4 +23,4 @@ func _on_body_entered(body):
 			2:
 				body.allow_attack_3 = true
 		var sprite_texture = gem_sprites[which_gem].texture as AtlasTexture
-		sprite_texture.region.x = 48
+		sprite_texture.region.position.x = 48
