@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqch1a4oqpfvh"]
+[gd_scene load_steps=12 format=3 uid="uid://dqch1a4oqpfvh"]
 
 [ext_resource type="Script" path="res://scripts/health_label.gd" id="1_5txs4"]
 [ext_resource type="Script" path="res://scripts/TimerLabel.gd" id="1_hixn6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/user_interface.gd" id="2_g5kh8"]
 [ext_resource type="Texture2D" uid="uid://infwwf58x7we" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_blue.png" id="4_gomc6"]
 [ext_resource type="Texture2D" uid="uid://478hiphiaef" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_red.png" id="6_8htqu"]
+[ext_resource type="Script" path="res://scripts/Player/flashOnAttack.gd" id="6_66mkg"]
 [ext_resource type="Texture2D" uid="uid://thdifxumuqwm" path="res://resources/Sprout Lands - Sprites - Basic pack/Objects/Gem_yellow.png" id="7_01g4i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ogycw"]
@@ -69,6 +70,7 @@ grow_horizontal = 0
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_ogycw")
 stretch_mode = 2
+script = ExtResource("6_66mkg")
 
 [node name="Gem2" type="TextureRect" parent="."]
 visible = false
@@ -78,6 +80,7 @@ offset_right = 1016.0
 offset_bottom = 16.0
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_ocggt")
+script = ExtResource("6_66mkg")
 
 [node name="Gem3" type="TextureRect" parent="."]
 visible = false
@@ -87,3 +90,4 @@ offset_right = 1104.0
 offset_bottom = 16.0
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_0k2kf")
+script = ExtResource("6_66mkg")
