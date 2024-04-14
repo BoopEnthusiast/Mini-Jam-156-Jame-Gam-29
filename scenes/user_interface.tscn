@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqch1a4oqpfvh"]
+[gd_scene load_steps=4 format=3 uid="uid://dqch1a4oqpfvh"]
 
 [ext_resource type="Script" path="res://scripts/health_label.gd" id="1_5txs4"]
 [ext_resource type="Script" path="res://scripts/TimerLabel.gd" id="1_hixn6"]
+[ext_resource type="Theme" uid="uid://dek8c25lr3hv4" path="res://resources/main_theme.tres" id="1_l1q5k"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_l1q5k")
 
 [node name="HealthLabel" type="Label" parent="."]
 layout_mode = 1

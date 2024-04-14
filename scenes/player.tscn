@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://d26nxoa5ym6p8"]
+[gd_scene load_steps=62 format=3 uid="uid://d26nxoa5ym6p8"]
 
 [ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_8721r"]
 [ext_resource type="Texture2D" uid="uid://dwh00xnapdk6" path="res://resources/Sprout Lands - Sprites - Basic pack/Characters/Mushroom_man_character_sheet.png" id="2_lxd3l"]
@@ -13,6 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://blm6aujrdkbv0" path="res://resources/audio/Footstep-003.wav" id="8_yywdc"]
 [ext_resource type="AudioStream" uid="uid://c47ran545ybfp" path="res://resources/audio/Footstep-004.wav" id="9_6ydlu"]
 [ext_resource type="AudioStream" uid="uid://buje2x72v7lk5" path="res://resources/audio/tapeRewindSound.mp3" id="13_wd12t"]
+[ext_resource type="AudioStream" uid="uid://n1hlifqlba82" path="res://resources/audio/Artifact_1.wav" id="14_leq7f"]
+[ext_resource type="AudioStream" uid="uid://d2bdylbx6el7n" path="res://resources/audio/attack0Sound.wav" id="14_swtit"]
+[ext_resource type="AudioStream" uid="uid://d0mb3s6sorw1m" path="res://resources/audio/Artifact_2.wav" id="15_systt"]
+[ext_resource type="AudioStream" uid="uid://bcralgwk1xles" path="res://resources/audio/Artifact_3.wav" id="16_tqgi8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otm6s"]
 radius = 19.0
@@ -477,3 +481,16 @@ stream = SubResource("AudioStreamRandomizer_yof2t")
 [node name="resetSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_wd12t")
 volume_db = -13.472
+
+[node name="attk1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_swtit")
+volume_db = -6.64
+
+[node name="attk2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_leq7f")
+
+[node name="attk3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_systt")
+
+[node name="attk4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_tqgi8")

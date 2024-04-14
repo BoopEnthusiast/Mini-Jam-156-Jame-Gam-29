@@ -8,7 +8,8 @@ var allow_attack_3:bool = true
 
 var player_health = 100
 func hit_player(damage):
-	print("player hit")
+	if currentAction == 4:
+		return
 	currentAction = 4 #stun action
 	var index = timedActionNumber.find(currentAction)
 	timedActionCooldown[index] = timedActionDefaultCooldown[index]
@@ -199,7 +200,8 @@ func handleTimedActions(delta):
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0
-			
+			var x = $attk2
+			x.play()
 		2:
 			weaponHitbox.rad = 60
 			weaponHitbox.length = 50
@@ -211,6 +213,8 @@ func handleTimedActions(delta):
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0
+			var x = $attk1
+			x.play()
 		6:
 			weaponHitbox.rad = 90
 			weaponHitbox.length = 1
@@ -222,6 +226,8 @@ func handleTimedActions(delta):
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0
+			var x = $attk3
+			x.play()
 		7:
 			weaponHitbox.rad = 60
 			weaponHitbox.length = 100
@@ -234,6 +240,8 @@ func handleTimedActions(delta):
 			weaponHitbox.updateRot(desireRot)
 			weaponHitbox.resetSwing()
 			weaponHitbox.slowFactor = 0.7
+			var x = $attk4
+			x.play()
 
 
 func handlePlayerAnimations():
